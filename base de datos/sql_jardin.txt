@@ -56,6 +56,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`docente` (
   `id_docente` INT NOT NULL,
   `nombre` VARCHAR(45) NULL,
+  `apellidos` VARCHAR(100) NULL,
   `telefono` INT(10) NULL,
   `fk_id_usuario` INT NULL,
   `direccion` VARCHAR(500) NULL,
@@ -73,25 +74,48 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `mydb`.`institucion`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`institucion` (
+  `id_institucion` INT NOT NULL,
+  `nombre` VARCHAR(100) NULL,
+  `departamento` VARCHAR(100) NULL,
+  `ciudad` VARCHAR(100) NULL,
+  `fecha_creacion` DATETIME NULL,
+  `id_usuario_creacion` INT NULL,
+  `fecha_modificacion` DATETIME NULL,
+  `id_usuario_modificacion` INT NULL,
+  PRIMARY KEY (`id_institucion`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `mydb`.`estudiante`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`estudiante` (
   `id_estudiante` INT NOT NULL,
   `fk_id_usuario` INT NULL,
-  `nombre_estudiante` VARCHAR(255) NULL,
-  `nombre_acudiente` VARCHAR(255) NULL,
+  `nombres_estudiante` VARCHAR(255) NULL,
+  `apellidos_estudiante` VARCHAR(255) NULL,
+  `nombres_acudiente` VARCHAR(255) NULL,
+  `apellidos_acudiente` VARCHAR(255) NULL,
   `telefono` VARCHAR(45) NULL,
   `fecha_nacimiento` DATE NULL,
-  `estudiantecol` VARCHAR(45) NULL,
+  `fk_id_institucion` INT NULL,
   `fecha_creacion` DATETIME NULL,
   `id_usuario_creacion` INT NULL,
   `fecha_modificacion` DATETIME NULL,
   `id_usuario_modificacion` INT NULL,
   PRIMARY KEY (`id_estudiante`),
-  
+ 
   CONSTRAINT `fk_id_usuario_estudiante`
     FOREIGN KEY (`fk_id_usuario`)
     REFERENCES `mydb`.`usuario` (`id_usuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_institucion_estudiante`
+    FOREIGN KEY (`fk_id_institucion`)
+    REFERENCES `mydb`.`institucion` (`id_institucion`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -104,6 +128,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`curso` (
   `id_curso` INT NOT NULL,
   `num_estudiantes` INT NULL,
   `fk_id_docente` INT NOT NULL,
+  `fk_id_institucion` INT NULL,
   `nombre` VARCHAR(100) NULL,
   `descripcion` VARCHAR(255) NULL,
   `fecha_creacion` DATETIME NULL,
@@ -114,6 +139,11 @@ CREATE TABLE IF NOT EXISTS `mydb`.`curso` (
   CONSTRAINT `fk_curso_docente`
     FOREIGN KEY (`fk_id_docente`)
     REFERENCES `mydb`.`docente` (`id_docente`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_institucion_curso`
+    FOREIGN KEY (`fk_id_institucion`)
+    REFERENCES `mydb`.`institucion` (`id_institucion`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
