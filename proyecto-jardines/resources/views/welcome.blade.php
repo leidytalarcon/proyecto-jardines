@@ -53,8 +53,7 @@
         
                           <!-- CONTENIDO -->    
 
-                         
-                           
+                         @yield('content')
                                     
 
                         <!-- FIN CONTENIDO -->
@@ -65,7 +64,7 @@
                     <!-- Footer -->
                     @include('footer')
                     <!-- End of Footer -->
-        
+         
                 </div>
                 <!-- End of Content Wrapper -->
         
