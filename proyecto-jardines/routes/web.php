@@ -256,3 +256,7 @@ Route::get('entrega/editar/{identrega}/',[
 Route::get('/longin',function(){
     return view('login');
 });
+
+// PDF
+Route::get('/pdf/prueba', 'PDFController@PDF')->name('descargarPDF');
+Route::get('/pdf/estudiantes', 'PDFController@PDFEstudiantes')->name('descargarPDFEstudiantes');

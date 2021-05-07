@@ -19,6 +19,9 @@
                                         <div class="pull-right">
                                             <a class="btn btn-primary" href="{{ route('estudiante.nuevo') }}">Crear estudiante</a>
                                         </div>
+                                        <div class="pull-right">
+                                            <a class="btn btn-primary"  href="{{route('descargarPDFEstudiantes')}}" target="_blank">Ver PDF</a>
+                                            </div>
                                     </div>
                                 </div>
                                 <div class="card-body">
