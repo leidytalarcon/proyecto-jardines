@@ -36,13 +36,13 @@
                                             <tbody>
                                                 @foreach($instituciones as $institucion )
                                                 <tr>
-                                                    <td>{{ $institucion["id_jardin"]}} </td>
-                                                    <td>{{ $institucion["nombre_jardin"]}} </td>
-                                                    <td>{{ $institucion["nit_jardin"]}} </td>
-                                                    <td>{{ $institucion["direccion"]}} </td>
+                                                    <td>{{ $institucion["Id_jardin"]}} </td>
+                                                    <td>{{ $institucion["Nombre_jardin"]}} </td>
+                                                    <td>{{ $institucion["Nit_jardin"]}} </td>
+                                                    <td>{{ $institucion["Direccion"]}} </td>
 
                                                     <td>
-                                                        <a class="btn btn-info" href="{{ route('institucion.editar',$institucion['id_jardin']) }}">Editar</a>
+                                                        <a class="btn btn-info" href="{{ route('institucion.editar',$institucion['Id_jardin']) }}">Editar</a>
                                                      </td>
                                                 </tr>
                                                

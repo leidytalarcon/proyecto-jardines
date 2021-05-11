@@ -50,7 +50,7 @@
                          
                          <option value="">institucion</option>
                          @foreach($instituciones as $institucion)
-                            <option value="{{$institucion['id_jardin']}}">{{$institucion["nombre_jardin"]}}</option> 
+                            <option value="{{$institucion['Id_jardin']}}">{{$institucion["Nombre_jardin"]}}</option> 
                          @endforeach
                          </select>
                         </div>

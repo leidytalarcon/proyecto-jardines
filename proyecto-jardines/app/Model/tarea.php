@@ -16,12 +16,12 @@ class tarea extends Model
     protected $primaryKey = 'idtarea';
 
     protected $fillable = [
-        'numero',
         'nombre',
         'contenido',
         'tarea_doc',
         'tarea_est',
         'tema_idtema',
+        'tema_curso_id_curso'
     ];
 
   

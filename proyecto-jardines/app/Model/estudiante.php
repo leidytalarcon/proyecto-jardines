@@ -29,12 +29,8 @@ class estudiante extends Model
         'curso_id_curso',
         'rol_id_rol'
 
-    ];
 
-    public function comentarios()
-    {
-        return $this->hasMany('App\Model\foro_comentario','estudiante_idestudiante','id_estudiante');
-    }
+    ];
 
   
 }

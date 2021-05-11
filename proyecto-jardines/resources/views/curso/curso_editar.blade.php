@@ -5,22 +5,22 @@
         <div class="row justify-content-center">
             <div class="col-md-15 mt" >
                 <div class="form_register">
-                    <form action="{{ route('curso.actualizar',$curso->id_curso) }}" method="POST" >                  
+                    <form action="{{ route('curso.actualizar',$curso['Id_curso']) }}" method="POST" >                  
                     @csrf
                         <div class="header-center">AGREGAR CURSO</div>
 
                         <div class="card-body">
                             <div class="form-group">
                               <label for=""class="col-12 ">CODIGO</label>
-                              <input type="number" class="form-control col-md-15" name="codigo" value="{{ $curso['codigo']}}">
+                              <input type="number" class="form-control col-md-15" name="codigo" value="{{ $curso['Codigo']}}">
                             </div>
                             <div class="form-group">
                               <label for=""class="col-12">NOMBRE </label>
-                              <input type="text" class="form-control col-md-15" name="nombre" value="{{ $curso['nombre']}}">
+                              <input type="text" class="form-control col-md-15" name="nombre" value="{{ $curso['Nombre']}}">
                             </div>
                             <div class="form-group">
                               <label for=""class="col-12">CUPO</label>
-                              <input type="text" class="form-control col-md-15" name="n_estudiantes" value="{{ $curso['n_estudiantes']}}">
+                              <input type="text" class="form-control col-md-15" name="n_estudiantes" value="{{ $curso['N_estudiantes']}}">
                             </div>
                             
                             <strong>DOCENTE :</strong>

@@ -28,19 +28,16 @@
                                                 <tr>
                                                     <th>numero</th>
                                                     <th>Nombre</th>
-                                                    <th>Acciones</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach($temas as $tema )
                                                 <tr>
-                                                    <td>{{ $tema["numero"]}} </td>
+                                                    <td>{{ $tema["idtema"]}} </td>
                                                     <td>{{ $tema["nombre"]}} </td>
 
                                                     <td>
-                                                        <a class="btn btn-info" href="{{ route('tema_editar',$tema['idtema']) }}">Editar</a>
-                                                        <a class="btn btn-info" href="{{ route('tema_ver',$tema['idtema']) }}">Ver</a>
-                                                        
+                                                        <a class="btn btn-info" href="{{ route('tema.editar',$tema['idtema']) }}">Editar</a>
                                                      </td>
                                                 </tr>
                                                

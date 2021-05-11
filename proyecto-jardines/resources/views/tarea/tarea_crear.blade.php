@@ -32,7 +32,7 @@
                             </div>
                             <strong>TEMA</strong>
                             <br>
-                         <select name="id_tema" style="width:500px" id="id_tema">
+                         <select name="id_tema" style="width:500px" id="tema_idtema">
                          <option value="">TEMA</option>
                          @foreach($temas as $tema)
                             <option value="{{$tema['idtema']}}">{{$tema['nombre']}}</option> 

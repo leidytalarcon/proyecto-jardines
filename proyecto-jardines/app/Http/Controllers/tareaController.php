@@ -28,25 +28,11 @@ class tareaController extends BaseController
         return view('tarea.tarea_editar',compact('tarea')); 
     }
 
-    public function ver($idtarea){
-        $tema=tema::all();
-        $tarea=tarea::find($idtarea);
-        return view('tarea.tarea_ver',compact('tarea','tema'));
-    }
-    
     public function nuevo(){
         $temas = tema::all();
         return view('tarea.tarea_crear',compact('temas'));
     }
-    public function actualizar2(Request $request,$idtarea){
-        $tarea=tarea::find($idtarea);
-        $tarea['tarea_est']=$request['tarea_est'];
-        $tarea->update();
-        $titulo = 'Titulo';
-        $tareas = tarea::all();
-  
-        return view('tarea.tarea_listar',compact('titulo','tareas')); 
-    }
+
     public function guardar(Request $request){
         
         tarea::create([
@@ -55,7 +41,7 @@ class tareaController extends BaseController
             'contenido' => $request['contenido'],
             'tarea_doc' => $request['tarea_doc'],
             'tarea_est' =>$request['tarea_est'],
-            'tema_idtema' => $request['id_tema']
+            'tema_idtema' => $request['idtema']
             
            
           ]);

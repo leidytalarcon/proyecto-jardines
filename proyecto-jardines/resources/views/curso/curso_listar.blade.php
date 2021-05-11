@@ -36,13 +36,13 @@
                                             <tbody>
                                                 @foreach($cursos as $curso )
                                                 <tr>
-                                                    <td>{{ $curso["id_curso"]}} </td>
-                                                    <td>{{ $curso["nombre"]}} </td>
-                                                    <td>{{ $curso["codigo"]}} </td>
-                                                    <td>{{ $curso["n_estudiantes"]}} </td>
+                                                    <td>{{ $curso["Id_curso"]}} </td>
+                                                    <td>{{ $curso["Nombre"]}} </td>
+                                                    <td>{{ $curso["Codigo"]}} </td>
+                                                    <td>{{ $curso["N_estudiantes"]}} </td>
 
                                                     <td>
-                                                        <a class="btn btn-info" href="{{ route('curso.editar',$curso['id_curso']) }}">Editar</a>
+                                                        <a class="btn btn-info" href="{{ route('curso.editar',$curso['Id_curso']) }}">Editar</a>
                                                      </td>
                                                 </tr>
                                                

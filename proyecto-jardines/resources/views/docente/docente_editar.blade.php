@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-md-15 mt" >
                 <div class="form_register">
-                  <form action="{{ route('docente.actualizar',$docente->id_docente) }}" method="POST">
+                  <form action="{{ route('docente.actualizar',$docente['id_docente']) }}" method="POST">
                     @csrf
                           
                         <div class="header-center">EDITAR DOCENTE</div>
@@ -39,7 +39,7 @@
                             </div>
                             <div class="form-group">
                               <label for=""class="col-12">CONTRASEÑA </label>
-                              <input type="text" class="form-control col-md-15" name="contrasena"value="{{ $docente['constrasena']}}"  placeholder="ingrese su contraseña">
+                              <input type="text" class="form-control col-md-15" name="contrasena"value="{{ $docente['contrasena']}}"  placeholder="ingrese su contraseña">
                             </div>
                             
                             <div class="row form-group">
