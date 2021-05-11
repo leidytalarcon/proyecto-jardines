@@ -36,21 +36,6 @@
                                                 <label class="custom-control-label" for="customCheck">Remember Me</label>
                                             </div>
 
-                                            <!-- <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                <label class="custom-control-label" for="customCheck1">Docente</label>
-                                            </div>
-
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                                <label class="custom-control-label" for="customCheck2">Rector</label>
-                                            </div>
-
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                                <label class="custom-control-label" for="customCheck3">Estudiante</label>
-                                            </div> -->
-
                                         </div>
                                         <button type="submit" class="btn-success col-md-9 offset-2">Login</button>
                                         <hr>
