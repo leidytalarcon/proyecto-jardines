@@ -53,7 +53,7 @@
                          <select name="id_curso" style="width:500px"  >
                          <option value="">curso</option>
                          @foreach($cursos as $curso)
-                            <option value="{{$curso['id_curso']}}">{{$curso["codigo"]}}</option> 
+                            <option value="{{$curso['Id_curso']}}">{{$curso["Codigo"]}}</option> 
                          @endforeach
                          </select>
                          <br>
@@ -62,7 +62,7 @@
                          <select name="id_institucion" style="width:500px"  >
                          <option value="">institucion</option>
                          @foreach($instituciones as $institucion)
-                            <option value="{{$institucion['id_jardin']}}">{{$institucion["nombre_jardin"]}}</option> 
+                            <option value="{{$institucion['Id_jardin']}}">{{$institucion["Nombre_jardin"]}}</option> 
                          @endforeach
                          </select>
                          <div class="row form-group">

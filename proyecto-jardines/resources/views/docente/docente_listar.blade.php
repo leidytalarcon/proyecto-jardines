@@ -39,7 +39,7 @@
                                             </thead>
                                             <tbody>
 
-                                                @foreach($docentes as $docente )
+                                                @foreach($lista_Docentes as $docente )
                                                 <tr>
                                                     <td>{{ $docente["id_docente"]}} </td>
                                                     <td>{{ $docente["documento"]}} </td>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -130,7 +131,6 @@ Route::post('docente/actualizar/{id_docente}/', [
     'as' => 'docente.actualizar'
 ]);
 
-//tarea
 Route::get('tarea/', [
     'uses' =>'tareaController@listar', 
     'as' => 'tarea_listar' 
@@ -141,27 +141,17 @@ Route::get('tarea/nuevo/', [
     'as' => 'tarea_crear' 
 ]);
 
-
-Route::get('tarea/ver/{idtarea}/',[
-    'uses'=> 'tareaController@ver',
-    'as'=> 'tarea_ver'
-]);
-
 Route::post('/tarea/guardar','tareaController@guardar');
 
 Route::post('tarea/actualizar/{idtarea}/', [
     'uses'=>'tareaController@actualizar',
     'as'=>'tarea.actualizar'
 ]);
-Route::post('tarea/actualizar2/{idtarea}/', [
-    'uses'=>'tareaController@actualizar2',
-    'as'=>'tarea.actualizar2'
-]);
+
 Route::get('tarea/editar/{idtarea}/',[
     'uses'=> 'tareaController@editar',
     'as'=> 'tarea.editar'
 ]);
-//tema
 Route::get('tema/', [
     'uses' =>'temaController@listar', 
     'as' => 'tema_listar' 
@@ -181,104 +171,36 @@ Route::post('tema/actualizar/{idtema}/', [
 
 Route::get('tema/editar/{idtema}/',[
     'uses'=> 'temaController@editar',
-    'as'=> 'tema_editar'
+    'as'=> 'tema.editar'
 ]);
-Route::get('tema/ver/{idtema}/',[
-    'uses'=> 'temaController@ver',
-    'as'=> 'tema_ver'
-]);
-//rector
+/////////////////////RECTOR////////////////////////////////////////
+
 Route::get('rector/', [
     'uses'=>'RectorController@listar',
     'as' => 'rector_listar'
 ]);
 
 Route::get('rector/nuevo/', [
-    'uses'=>'rectorController@nuevo',
-    'as' => 'rector_crear'
-]);
+    'uses'=>'RectorController@create',
+    'as' => 'rector_crear']);
 
+Route::get('rector/editar/{id_rector}/',[
+    'uses'=> 'rectorController@editar',
+    'as'=> 'rector.editar'
+]);    
 Route::post('rector/editar/{id_rector}/', [
     'uses'=>'rectorController@editar',
     'as' => 'rector_editar'
 ]); 
 Route::post('/rector/guardar','rectorController@guardar');
-//foro
 
-Route::get('foro/', [
-    'uses' =>'foroController@listar', 
-    'as' => 'foro_listar' 
-]);
-Route::get('foro/editar/{idforo}/', [
-    'uses' =>'foroController@editar',   
-    'as' => 'foro.editar'
-]);
-Route::post('foro/actualizar/{idforo}/', [
-    'uses' =>'foroController@actualizar',   
-    'as' => 'foro.actualizar'
-]);
-Route::get('foro/comentario/{idforo}/', [
-    'uses' =>'foroController@comentario',   
-    'as' => 'foro.comentarios'
-]);
-Route::get('foro/nuevo/{idforo}/', [
-    'uses' =>'foroController@nuevoComentario', 
-    'as' => 'comentario.nuevo' 
-]);
-Route::post('/foro/comentario/guardar','foroController@guardar_comentario');
+////////////LOGIN///////////////
+Route::get('/autenticar','LoginController@autenticar')->name('auth');
 
-Route::get('foro/nuevo/', [
-    'uses' =>'foroController@nuevo', 
-    'as' => 'foro.nuevo' 
-]);
-Route::post('/foro/guardar','foroController@guardar');
-
-
-Route::post('/foro/respuesta/guardar','foroController@guardar_respuesta');
-
-Route::get('respuesta/eliminar/{idrespuesta}/', [
-    'uses' =>'foroController@eliminar_respuesta',   
-    'as' => 'respuesta.eliminar'
-]);
-
-
-//entrega
-
-Route::get('entrega/', [
-    'uses' =>'entregaController@listar', 
-    'as' => 'entrega_listar' 
-]);
-
-Route::get('entrega/nuevo/', [
-    'uses' =>'entregaController@nuevo', 
-    'as' => 'entrega_crear' 
-]);
-
-
-Route::get('entrega/ver/{identrega}/',[
-    'uses'=> 'entregaController@ver',
-    'as'=> 'entrega_ver'
-]);
-
-Route::post('/entrega/guardar','entregaController@guardar');
-
-Route::post('entrega/actualizar/{identrega}/', [
-    'uses'=>'entregaController@actualizar',
-    'as'=>'entrega.actualizar'
-]);
-Route::post('entrega/actualizar2/{identrega}/', [
-    'uses'=>'entregaController@actualizar2',
-    'as'=>'entrega.actualizar2'
-]);
-Route::get('entrega/editar/{identrega}/',[
-    'uses'=> 'entregaController@editar',
-    'as'=> 'entrega.editar'
-]);
-//login
-Route::get('/longin',function(){
-    return view('login');
+Route::get('/login', function () {
+    return view('Login.Login');
 });
 
-// PDF
-Route::get('/pdf/prueba', 'PDFController@PDF')->name('descargarPDF');
-Route::get('/pdf/estudiantes', 'PDFController@PDFEstudiantes')->name('descargarPDFEstudiantes');
+////////////////consumo de servicio/////////////////
+
+

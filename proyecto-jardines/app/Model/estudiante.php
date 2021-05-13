@@ -28,7 +28,6 @@ class estudiante extends Model
         'institucion_id_jardin',
         'curso_id_curso',
         'rol_id_rol'
-
     ];
 
     public function comentarios()

@@ -25,17 +25,9 @@ class temaController extends BaseController
         return view('tema.tema_listar',compact('titulo','temas')); 
     }
 
-    public function ver($idtema){
-        
-        $titulo = 'Titulo';
-        $tema=tema::find($idtema);
-        return view('tema.tema_ver',compact('titulo','tema'));
-    }
-    
-    
     public function editar($idtema){
-        $tema = tema::find($idtema);
-        return view('tema.tema_editar',compact('tema')); 
+        $temas = tema::find($idtema);
+        return view('tema.tema.editar',compact('tema')); 
     }
 
     public function nuevo(){

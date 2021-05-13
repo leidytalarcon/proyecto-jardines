@@ -28,18 +28,16 @@
                                                 <tr>
                                                     <th>numero</th>
                                                     <th>Nombre</th>
-                                                    <th>Acciones</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach($tareas as $tarea )
                                                 <tr>
-                                                    <td>{{ $tarea["numero"]}} </td>
+                                                    <td>{{ $tarea["idtarea"]}} </td>
                                                     <td>{{ $tarea["nombre"]}} </td>
 
                                                     <td>
                                                         <a class="btn btn-info" href="{{ route('tarea.editar',$tarea['idtarea']) }}">Editar</a>
-                                                        <a class="btn btn-info" href="{{ route('tarea_ver',$tarea['idtarea']) }}">Ver</a>
                                                      </td>
                                                 </tr>
                                                

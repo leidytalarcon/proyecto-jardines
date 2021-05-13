@@ -39,7 +39,7 @@
                                             </thead>
                                             <tbody>
 
-                                                @foreach($rectores as $rector )
+                                                @foreach($rector as $rector )
                                                 <tr>
                                                     <td>{{ $rector["id_rector"]}} </td>
                                                     <td>{{ $rector["documento_rector"]}} </td>
@@ -50,7 +50,7 @@
                                                     <td>{{ $rector["institucion_id_jardin"]}} </td>
                                                     <td>{{ $rector["rol_id_rol"]}} </td>
                                                     <td>
-                                                        <a class="btn btn-info" href="{{ route('rector_editar',$rector['id_rector']) }}">Editar</a>
+                                                        <a class="btn btn-info" href="{{ route('rector.editar',$rector['id_rector']) }}">Editar</a>
                                                      </td>
                                                 </tr>
                                                

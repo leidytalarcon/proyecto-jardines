@@ -17,54 +17,58 @@ class rectorController extends BaseController
 
     public function listar(){
         $titulo = 'Titulo';
-        $rectores = rector::all();
+        $rector = rector::all();
 
-        return view('rector.rector_listar',compact('titulo','rectores')); 
+        return view('rector.rector_listar',compact('titulo','rector')); 
     }
 
     public function editar($id_rector){
-        $rector = rector::find($id_rector);
+        $rector = rector::find($id_docente);
         return view('rector.rector_editar',compact('rector')); 
     }
 
     public function nuevo(){
-        $instituciones=institucion::all();
-        return view('rector.rector_crear',compact('instituciones'));
+        $rector = rector::all();
+        return view('rector.rector_crear',compact("rector"));
     }
 
     public function guardar(Request $request){
         
         rector::create([
 
-            'documento_rector' => $request['documento'],
-            'nombre_rector' => $request['nombre'],
+            'documento' => $request['documento'],
+            'nombre' => $request['nombre'],
             'correo' => $request['correo'],
             'telefono' => $request['telefono'],
+            'direccion' =>$request['direccion'],
+            'ciudad' =>$request['ciudad'],
             'username' =>$request['username'],
             'contrasena' =>$request['contrasena'],
             'institucion_id_jardin'  => $request['id_institucion'],
-            'rol_id_rol'=> 2
+            'rol_id_rol'=> 3
            
           ]);
           $titulo = 'Titulo';
-          $rectores = rector::all();
+          $rector = rector::all();
   
-          return view('rector.rector_listar',compact('titulo','rectores')); 
+          return view('rector.rector_listar',compact('titulo','rector')); 
     }
 
     public function actualizar(Request $request,$id_rector){
         $rector = rector::find($id_rector);
-        $rector['documento_rector'] = $request['documento'];
-        $rector['nombre_rector']=$request['nombre'];
+        $rector['documento'] = $request['documento'];
+        $rector['nombre']=$request['nombre'];
         $rector['correo'] =$request['correo'];
         $rector['telefono'] =$request['telefono'];
+        $rector['direccion'] =$request['direccion'];
+        $rector['ciudad'] =$request['ciudad'];         
         $rector['username' ]=$request['username'];
         $rector['contrasena'] =$request['contrasena'];
 
         $rector->update();
         $titulo = 'Titulo';
-          $rectores = rector::all();
+          $rector = rector::all();
   
-          return view('rector.rector_listar',compact('titulo','rectores')); 
+          return view('rector.rector_listar',compact('titulo','rector')); 
     }
 }

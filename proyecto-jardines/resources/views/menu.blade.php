@@ -40,9 +40,9 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item active">
-    <a class="nav-link" href="/longin">
-        <i class="fas fa-fw fa-home"></i>
-        <span>INICIO SESIÓN</span></a>
+    <a class="nav-link" href="/login">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Inicio</span></a>
 </li>
 
 <!-- Divider -->
@@ -57,7 +57,7 @@
 <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-building"></i>
+            <i class="fas fa-fw fa-write"></i>
             <span>Jardines</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -81,14 +81,14 @@ Usuarios
 <li class="nav-item">
 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages1"
 aria-expanded="true" aria-controls="collapsePages1">
-<i class="fas fa-fw fa-user"></i>
+<i class="fas fa-fw fa-folder"></i>
 <span>Administrador</span>
 </a>
 <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 <div class="bg-white py-2 collapse-inner rounded">
     <h6 class="collapse-header">RECTOR:</h6>
-    <a class="collapse-item" href="{{ route('rector_crear')}} "> Registro Rector</a>
-    <a class="collapse-item" href="{{ route('rector_listar')}}"> ver Rector</a>
+    <a class="collapse-item" href="{{ route('rector_crear') }}"> Registro Rector</a>
+    <a class="collapse-item" href="/"> ver Rector</a>
     <h6 class="collapse-header">JARDINES:</h6>
     <a class="collapse-item" href="{{ route('institucion.nuevo') }}">Registro Jardines</a>
     <a class="collapse-item" href="{{ route('institucion.listar') }}">Ver Jardines</a>
@@ -101,7 +101,7 @@ aria-expanded="true" aria-controls="collapsePages1">
 <li class="nav-item">
 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
 aria-expanded="true" aria-controls="collapsePages2">
-<i class="fas fa-fw fa-child"></i>
+<i class="fas fa-fw fa-folder"></i>
 <span>Rector</span>
 </a>
 <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -126,7 +126,7 @@ aria-expanded="true" aria-controls="collapsePages2">
 <li class="nav-item">
 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages3"
 aria-expanded="true" aria-controls="collapsePages3">
-<i class="fas fa-fw fa-group"></i>
+<i class="fas fa-fw fa-folder"></i>
 <span>Docente</span>
 </a>
 <div id="collapsePages3" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -145,13 +145,13 @@ aria-expanded="true" aria-controls="collapsePages3">
 <li class="nav-item">
 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages4"
 aria-expanded="true" aria-controls="collapsePages4">
-<i class="fa-github-alt"></i>
+<i class="fas fa-fw fa-folder"></i>
 <span>Estudiante</span>
 </a>
 <div id="collapsePages4" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 <div class="bg-white py-2 collapse-inner rounded">
     <h6 class="collapse-header">Ventanas:</h6>
-    <a class="collapse-item" href="">Ver temas</a>
+    <a class="collapse-item" href="/">Ver temas</a>
     <a class="collapse-item" href="/"> Ver Tareas</a>
     <a class="collapse-item" href="/"> Participar foro</a>
     <div class="collapse-divider"></div>                          

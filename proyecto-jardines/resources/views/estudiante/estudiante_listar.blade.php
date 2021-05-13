@@ -19,9 +19,6 @@
                                         <div class="pull-right">
                                             <a class="btn btn-primary" href="{{ route('estudiante.nuevo') }}">Crear estudiante</a>
                                         </div>
-                                        <div class="pull-right">
-                                            <a class="btn btn-primary"  href="{{route('descargarPDFEstudiantes')}}" target="_blank">Ver PDF</a>
-                                            </div>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -42,18 +39,18 @@
 
                                                 @foreach($estudiantes as $estudiante ),
                                                 <tr>
-                                                    <td>{{ $estudiante["documento"]}} </td>
-                                                    <td>{{ $estudiante["nombre"]}} </td>
-                                                    <td>{{ $estudiante["direccion"]}} </td>
-                                                    <td>{{ $estudiante["correo"]}} </td>
-                                                    <td>{{ $estudiante["telefono"]}} </td>
+                                                    <td>{{ $estudiante["Documento"]}} </td>
+                                                    <td>{{ $estudiante["Nombre"]}} </td>
+                                                    <td>{{ $estudiante["Direccion"]}} </td>
+                                                    <td>{{ $estudiante["Correo"]}} </td>
+                                                    <td>{{ $estudiante["Telefono"]}} </td>
                                                     
                                                     @foreach($cursos as $curso),
                                                   
-                                                    <td>{{ $curso["codigo"]}} </td>
+                                                    <td>{{ $curso["Codigo"]}} </td>
 
                                                     <td>
-                                                        <a class="btn btn-info" href="{{ route('estudiante.editar',$estudiante['id_estudiante']) }}">Editar</a>
+                                                        <a class="btn btn-info" href="{{ route('estudiante.editar',$estudiante['Id_estudiante']) }}">Editar</a>
                                                      </td>
                                                 </tr>
                                                 @endforeach
