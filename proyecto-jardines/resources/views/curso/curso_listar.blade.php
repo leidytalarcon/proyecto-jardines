@@ -43,6 +43,8 @@
 
                                                     <td>
                                                         <a class="btn btn-info" href="{{ route('curso.editar',$curso['id_curso']) }}">Editar</a>
+                                                     
+                                                        <a class="btn btn-info" href="{{ route('curso.estudiantes',$curso['id_curso']) }}">Estudiantes</a>
                                                      </td>
                                                 </tr>
                                                

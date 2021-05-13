@@ -74,6 +74,28 @@ Route::get('curso/editar/{id_curso}/', [
     'as' => 'curso.editar'
 ]);
 
+Route::get('curso/estudiantes/{id_curso}/', [
+    'uses' =>'cursoController@estudiantes',   
+    'as' => 'curso.estudiantes'
+]);
+
+Route::get('curso/estudiantes/nuevo/{id_curso}/', [
+    'uses' =>'cursoController@estudiantes_nuevo',   
+    'as' => 'curso.estudiantes.nuevo'
+]);
+
+Route::get('curso/estudiantes/guardar/{id_curso}/{id_estudiante}', [
+    'uses' =>'cursoController@estudiantes_guardar',   
+    'as' => 'curso.estudiantes.guardar'
+]);
+
+Route::post('/curso/estudiantes/buscar', 'cursoController@estudiantes_buscar');
+
+Route::get('curso/estudiantes/eliminar/{idcursoestudiante}', [
+    'uses' =>'cursoController@estudiantes_eliminar',   
+    'as' => 'curso.estudiantes.eliminar'
+]);
+
 Route::get('curso/nuevo/', [
     'uses' =>'cursoController@nuevo',   
     'as' => 'curso.nuevo'

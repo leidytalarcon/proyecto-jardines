@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use App\Model\docente;
 use App\Model\curso;
+use App\Model\curso_estudiante;
+use App\Model\estudiante;
 
 class cursoController extends BaseController
 
@@ -23,8 +25,8 @@ class cursoController extends BaseController
     }
 
     public function editar($id_curso){
-        $cursos = curso::find($id_curso);
-        return view('curso.curso_editar',compact('cursos')); 
+        $curso = curso::find($id_curso);
+        return view('curso.curso_editar',compact('curso')); 
     }
 
     public function nuevo(){
@@ -60,5 +62,55 @@ class cursoController extends BaseController
           $cursos = curso::all();
   
           return view('curso.curso_listar',compact('titulo','cursos')); 
+    }
+
+    //CURSO ESTUDIANTES
+
+    public function estudiantes($id_curso){
+        $curso = curso::find($id_curso);
+        $estudiantes = $curso->estudiantes;
+
+        return view('curso.curso_estudiantes_listar',compact('curso','estudiantes')); 
+    }
+
+    public function estudiantes_nuevo($id_curso){
+        $curso = curso::find($id_curso);
+        return view('curso.curso_estudiante_nuevo',compact("curso"));
+    }
+
+    public function estudiantes_buscar(Request $request){
+        
+        $curso = curso::find($request['idcurso']);
+        
+        $estudiantes = estudiante::Where('documento', 'like', '%' . $request['identificacion'] . '%')->get();
+        
+        return view('curso.curso_estudiante_buscar',compact('curso','estudiantes')); 
+
+    }
+
+    public function estudiantes_guardar($id_curso,$id_estudiante){
+        curso_estudiante::create([
+
+            'fecha_creacion' => date("Y-m-d H:i:s"),
+            'curso_idcurso' => $id_curso,
+            'estudiante_idestudiante' => $id_estudiante
+           
+          ]);
+          
+          $curso = curso::find($id_curso);
+          $estudiantes = $curso->estudiantes;
+          return view('curso.curso_estudiantes_listar',compact('curso','estudiantes')); 
+    }
+
+    public function estudiantes_eliminar($idcursoestudiante){
+          $curso_estudiante = curso_estudiante::Where('idcursoestudiante',$idcursoestudiante)->First();
+        
+          $id_curso = $curso_estudiante->curso_idcurso;
+          
+          $delete = curso_estudiante::destroy($idcursoestudiante);
+          
+          $curso = curso::find($id_curso);
+          $estudiantes = $curso->estudiantes;
+          return view('curso.curso_estudiantes_listar',compact('curso','estudiantes')); 
     }
 }

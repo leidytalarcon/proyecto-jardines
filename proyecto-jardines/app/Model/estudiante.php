@@ -35,6 +35,5 @@ class estudiante extends Model
     {
         return $this->hasMany('App\Model\foro_comentario','estudiante_idestudiante','id_estudiante');
     }
-
   
 }
