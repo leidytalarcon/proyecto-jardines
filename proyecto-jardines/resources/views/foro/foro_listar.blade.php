@@ -17,7 +17,7 @@
                                     <div class="col-lg-12 margin-tb">
                                         
                                         <div class="pull-right">
-                                            <a class="btn btn-primary" href="{{ route('foro.nuevo') }}">Crear foro</a>
+                                            <a class="btn btn-primary" id="foro_nuevo" href="/">Crear foro</a>
                                         </div>
                                     </div>
                                 </div>
@@ -85,6 +85,14 @@
                                     }
                                 }
                             });
+
+                            $('#foro_nuevo').click(function(e) {
+                                e.preventDefault();
+                                route_list = '{{ route('foro.nuevo') }}';
+                    
+                                window.location.href = route_list;
+                            });
+
                             });
                         </script>
       

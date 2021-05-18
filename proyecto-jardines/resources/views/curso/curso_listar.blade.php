@@ -17,13 +17,13 @@
                                     <div class="col-lg-12 margin-tb">
                                         
                                         <div class="pull-right">
-                                            <a class="btn btn-primary" href="{{ route('curso.nuevo') }}">Crear Curso</a>
+                                            <a class="btn btn-primary" id="curso_nuevo">Crear Curso</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <table class="table table-bordered" id="tableCurso" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
@@ -34,23 +34,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($cursos as $curso )
-                                                <tr>
-                                                    <td>{{ $curso["Id_curso"]}} </td>
-                                                    <td>{{ $curso["Nombre"]}} </td>
-                                                    <td>{{ $curso["Codigo"]}} </td>
-                                                    <td>{{ $curso["N_estudiantes"]}} </td>
-
-                                                    <td>
-                                                        <a class="btn btn-info" href="{{ route('curso.editar',$curso['id_curso']) }}">Editar</a>
-                                                     
-                                                        <a class="btn btn-info" href="{{ route('curso.estudiantes',$curso['id_curso']) }}">Estudiantes</a>
-
-                                                        <a class="btn btn-info" href="{{ route('curso.docente',$curso['id_curso']) }}">Docente</a>
-                                                     </td>
-                                                </tr>
-                                               
-                                                @endforeach
+                                                
                                                
                                             </tbody>
                                         </table>
@@ -60,6 +44,58 @@
         
                         </div>
                         <!-- /.container-fluid -->
+                        
+                        <script>
+                            jQuery(document).ready(function () {
+                                var _t = $('input[name="_token"]').val();  //you need add a token
+                                var v = $(this).val();
+                                $.ajax({
+                                 url:"{{ route('curso.listar') }}",
+                                     method: "GET",
+                                 dataType: 'JSON',
+                                 data:{_t:_t, v:v},
+
+                                 success:function(data){
+                                     
+                                     for(var c in data){
+                                        var idcurso = data[c].id_curso;
+                                        var row = '<tr>'+
+                                            
+                                            '<td>'+ data[c].id_curso +'</td>'+
+                                            '<td>'+ data[c].nombre +'</td>'+
+                                            '<td>'+ data[c].codigo +'</td>'+
+                                            '<td>'+ data[c].n_estudiantes+'</td>'+
+                                        
+                                            '<td>'+
+                                                "<a class=\"btn btn-info\" href=\"{{ route('curso.editar',"idcurso") }}\">"+
+                                                    '<i class="fas fa-edit"></i>'+
+                                                '</a>'   +                                      
+                                            '</td>'+
+                                            '<td>'+
+                                                "<a class=\"btn btn-info\" href=\"{{ route('curso.estudiantes',"idcurso") }}\">Estudiantes</a>"+
+                                            '</td>'+
+
+                                            '<td>'+
+                                                "<a class=\"btn btn-info\" href=\"{{ route('curso.docente',"idcurso") }}\">Docente</a>"+
+                                            '</td>'+
+                                            '</tr>'
+                                        
+                                        $('#tableCurso').append(row.replaceAll("idcurso", idcurso)
+                                        );
+                                    }
+                                }
+                            });
+
+                            $('#curso_nuevo').click(function(e) {
+                                e.preventDefault();
+                                route_list = '{{ route('curso.nuevo') }}';
+                    
+                                window.location.href = route_list;
+                            });
+                            });
+
+                            
+                        </script>
 
                         <!-- FIN CONTENIDO -->
       

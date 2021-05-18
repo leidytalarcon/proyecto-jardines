@@ -43,6 +43,12 @@ Route::get('institucion/editar/{id_jardin}/',[
     'as'=> 'institucion.editar'
 ]);
 
+//estudiante
+Route::get('estudiante/index', [
+    'uses' =>'estudianteController@index', 
+   'as' => 'estudiante.index' 
+]);
+
 Route::get('estudiante/', [
     'uses' =>'estudianteController@listar', 
     'as' => 'estudiante.listar' 
@@ -63,6 +69,13 @@ Route::post('/estudiante/guardar', 'estudianteController@guardar');
 Route::post('estudiante/actualizar/{id_estudiante}/', [
     'uses' =>'estudianteController@actualizar',   
     'as' => 'estudiante.actualizar'
+]);
+
+
+//curso
+Route::get('curso/index', [
+    'uses' =>'cursoController@index', 
+   'as' => 'curso.index' 
 ]);
 
 Route::get('curso/', [

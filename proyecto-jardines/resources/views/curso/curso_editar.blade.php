@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-15 mt" >
                 <div class="form_register">
-                    <form action="{{ route('curso.actualizar',$curso['Id_curso']) }}" method="POST" >                  
+                    <form action="{{ route('curso.actualizar',$curso['id_curso']) }}" method="POST" >                  
                     @csrf
                         <div class="header-center">AGREGAR CURSO</div>
 

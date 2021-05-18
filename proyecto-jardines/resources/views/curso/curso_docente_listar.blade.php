@@ -21,7 +21,7 @@
                             <div class="card-body">
                                 <label for=""class="h2 mb-2 text-gray-800">ID  {{ $curso->docente->id_docente}} </label>
                                   <label for=""class="col-12">NOMBRE {{ $curso->docente->nombre}} </label>
-                                  <label for=""class="col-12">DOCUMENTO {{ $$curso->docente->documento}}</label>
+                                  <label for=""class="col-12">DOCUMENTO {{ $curso->docente->documento}}</label>
                                   <label for=""class="col-12">CORREO {{ $curso->docente->correo}}</label>
                             </div>
                             <form action="/curso/docente/buscar" method="POST" >                  

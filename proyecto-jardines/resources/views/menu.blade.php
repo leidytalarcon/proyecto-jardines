@@ -111,10 +111,10 @@ aria-expanded="true" aria-controls="collapsePages2">
     <a class="collapse-item" href="{{ route('docente_listar') }}">Ver Docentes</a>
     <a class="collapse-header">CURSO:</a>
     <a class="collapse-item" href="{{ route('curso.nuevo') }}">Registro cursos</a>
-    <a class="collapse-item" href="{{ route('curso.listar') }}">Ver cursos</a>
+    <a class="collapse-item" id="curso" href="/">Listar curso</a>
     <a class="collapse-header">ESTUDIANTE:</a>
     <a class="collapse-item" href="{{ route('estudiante.nuevo') }}">Registrar estudiantes</a> 
-    <a class="collapse-item" href="{{ route('estudiante.listar') }}">Listar estudiantes</a> 
+    <a class="collapse-item" id="estudiante" href="/">Listar estudiantes</a>
 
     <div class="collapse-divider"></div>
 
@@ -154,6 +154,7 @@ aria-expanded="true" aria-controls="collapsePages4">
     <a class="collapse-item" href="/">Ver temas</a>
     <a class="collapse-item" href="/"> Ver Tareas</a>
     <a class="collapse-item" id="foro" href="/"> Participar foro</a>
+   
     <div class="collapse-divider"></div>                          
 </div>
 </div>
@@ -174,12 +175,29 @@ aria-expanded="true" aria-controls="collapsePages4">
 <!-- End of Sidebar -->
 
 <script type="text/javascript">
-    jQuery(document).ready(function () {
+    jQuery(document).ready(function () {//clasesin
+
         $('#foro').click(function(e) {
             e.preventDefault();
             route_list = '{{ route('foro.index') }}';
 
             window.location.href = route_list;
         });
+
+        $('#estudiante').click(function(e) {
+            e.preventDefault();
+            route_list = '{{ route('estudiante.index') }}';
+
+            window.location.href = route_list;
+        });
+        $('#curso').click(function(e) {
+            e.preventDefault();
+            route_list = '{{ route('curso.index') }}';
+
+            window.location.href = route_list;
+        });
+
     });
+
+   
 </script>

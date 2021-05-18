@@ -29,7 +29,7 @@ class foro_comentario extends Model
 
     public function foro()
     {
-        return $this->belongsTo('App\Model\foro', 'idforo', 'foro_idforo');
+        return $this->belongsTo('App\Model\foro', 'foro_idforo', 'idforo');
     }
 
     public function estudiante()

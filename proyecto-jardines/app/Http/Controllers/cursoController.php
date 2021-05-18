@@ -19,74 +19,56 @@ class cursoController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function listar(){
-        $titulo = 'Titulo';
-        $curl = new Curl();
-        $curl->get('http://localhost:58972/api/curso/Listar');
-        
-        if ($curl->error) {
-        } else {
-            $cursos = $curl->response;
-            $cursos = json_decode(json_encode($cursos), true);
-        }
+    public function index()
+    {
+        return view('curso.curso_listar');
 
-        return view('curso.curso_listar',compact('titulo','cursos')); 
+    }
+
+    public function listar(){
+
+        $curso = curso::all();
+        return response()->json($curso, 200);
     }
 
     public function editar($id_curso){
-        $url='http://localhost:58972/api/curso/Buscar?idCurso='.$id_curso;
-        $curl = new Curl();
-        $curl->get($url);  
-        $curso = $curl->response;
-        $curso = json_decode(json_encode($curso), true);
+        $curso = curso::find($id_curso);
         return view('curso.curso_editar',compact('curso')); 
     }
 
     public function nuevo(){
-        $curl = new Curl();
-        $curl->get('http://localhost:58972/api/docente/Listar');
-        $docentes = $curl->response;
-        $docentes = json_decode(json_encode($docentes), true);
+        $docentes = docente::all();
         return view('curso.curso_crear',compact("docentes"));
     }
 
     public function guardar(Request $request){
-            $curso['codigo'] = $request['codigo'];
-            $curso['nombre'] = $request['nombre'];
-            $curso['n_estudiantes'] = $request['n_estudiantes'];
-            $curso['docente_id_docente'] = $request['id_docente'];
-            $url='http://localhost:58972/api/curso/Agregar';
-            $curl = new Curl();
-            $curl->post($url, $curso);
-            $curl->get('http://localhost:58972/api/curso/Listar');
-            $cursos = $curl->response;
-            $cursos = json_decode(json_encode($cursos), true);
-          $titulo = 'Titulo';  
+
+        curso::create([
+
+            'codigo' => $request['codigo'],
+            'nombre' => $request['nombre'],
+            'n_estudiantes' => $request['n_estudiantes'],
+            'docente_id_docente' => $request['id_docente']
+
+          ]);
+          $titulo = 'Titulo';
+          $cursos = curso::all();
+
           return view('curso.curso_listar',compact('titulo','cursos')); 
     }
 
     public function actualizar(Request $request,$id_curso){
-        $curso['id_curso'] = $id_curso;
+        $curso = curso::find($id_curso);
         $curso['codigo'] = $request['codigo'];
         $curso['nombre']=$request['nombre'];
         $curso['n_estudiantes'] =$request['n_estudiantes'];
-        $url='http://localhost:58972/api/curso/Editar';
-        $curl = new Curl();
-        $curl->post($url, $curso);  
-        if($curl->error){
-            return var_dump($curl->response->form);
-        }else{
-            $curl->get('http://localhost:58972/api/curso/Listar');
-            if ($curl->error) {
-            } else {
-                $cursos = $curl->response;
-                $cursos = json_decode(json_encode($cursos), true);
-                $titulo = 'Titulo';
-            }
+
+
+        $curso->update();
         $titulo = 'Titulo';
-  
+          $cursos = curso::all();
+
           return view('curso.curso_listar',compact('titulo','cursos')); 
-        }
     }
 
     //CURSO ESTUDIANTES
@@ -139,6 +121,8 @@ class cursoController extends BaseController
           return view('curso.curso_estudiantes_listar',compact('curso','estudiantes')); 
     }
 
+    //DOCENTE CURSO
+    
     public function docente($id_curso){
         $curso = curso::find($id_curso);
 
