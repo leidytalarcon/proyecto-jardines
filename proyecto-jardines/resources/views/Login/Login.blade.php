@@ -48,7 +48,8 @@
                                     <a class="small" href="/">Forgot Password?</a>
                                 </div>
                                 <div class="text-center">
-                                    <a class="small" href="/">Quieres Hacer parte? Postulate aqui</a>
+
+                                    <a class="small" href="restro_crear">Quieres Hacer parte? Postulate aqui</a>
                                 </div>
                             </div>
                         </div>
@@ -63,6 +64,4 @@
 </div>
 
 
-@endsectio
-   
-    @endsection
+@endsection
