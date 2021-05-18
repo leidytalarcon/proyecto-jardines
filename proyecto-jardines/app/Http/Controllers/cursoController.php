@@ -138,4 +138,31 @@ class cursoController extends BaseController
           $estudiantes = $curso->estudiantes;
           return view('curso.curso_estudiantes_listar',compact('curso','estudiantes')); 
     }
+
+    public function docente($id_curso){
+        $curso = curso::find($id_curso);
+
+        return view('curso.curso_docente_listar',compact('curso')); 
+
+        
+    }
+
+    public function docente_buscar(Request $request){
+        
+        $curso = curso::find($request['idcurso']);
+        
+        $docentes = docente::Where('documento', 'like', '%' . $request['identificacion'] . '%')->get();
+        
+        return view('curso.curso_docente_buscar',compact('curso','docentes')); 
+
+    }
+
+    public function docente_guardar($id_curso,$id_docente){
+        
+          $curso = curso::find($id_curso);
+          $curso['docente_id_docente'] = $id_docente;
+          $curso->update();
+
+          return view('curso.curso_docente_listar',compact('curso')); 
+    }
 }

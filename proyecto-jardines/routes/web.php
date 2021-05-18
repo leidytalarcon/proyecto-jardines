@@ -85,6 +85,20 @@ Route::get('curso/estudiantes/nuevo/{id_curso}/', [
     'as' => 'curso.estudiantes.nuevo'
 ]);
 
+
+Route::get('curso/docente/{id_curso}/', [
+    'uses' =>'cursoController@docente',   
+    'as' => 'curso.docente'
+]);
+Route::post('/curso/docente/buscar', 'cursoController@docente_buscar');
+
+
+
+Route::get('curso/docente/guardar/{id_curso}/{id_docente}', [
+    'uses' =>'cursoController@docente_guardar',   
+    'as' => 'curso.docente.guardar'
+]);
+
 Route::get('curso/estudiantes/guardar/{id_curso}/{id_estudiante}', [
     'uses' =>'cursoController@estudiantes_guardar',   
     'as' => 'curso.estudiantes.guardar'
@@ -202,5 +216,90 @@ Route::get('/login', function () {
 });
 
 ////////////////consumo de servicio/////////////////
+
+//foro
+
+Route::get('foro/index', [
+    'uses' =>'foroController@index', 
+   'as' => 'foro.index' 
+]);
+
+Route::get('foro/', [
+     'uses' =>'foroController@listar', 
+    'as' => 'foro.listar' 
+]);
+Route::get('foro/editar/{idforo}/', [
+    'uses' =>'foroController@editar',   
+    'as' => 'foro.editar'
+]);
+Route::post('foro/actualizar/{idforo}/', [
+    'uses' =>'foroController@actualizar',   
+    'as' => 'foro.actualizar'
+]);
+Route::get('foro/comentario/{idforo}/', [
+    'uses' =>'foroController@comentario',   
+    'as' => 'foro.comentarios'
+]);
+Route::get('foro/nuevo/{idforo}/', [
+    'uses' =>'foroController@nuevoComentario', 
+    'as' => 'comentario.nuevo' 
+]);
+Route::post('/foro/comentario/guardar','foroController@guardar_comentario');
+
+Route::get('foro/nuevo/', [
+    'uses' =>'foroController@nuevo', 
+    'as' => 'foro.nuevo' 
+]);
+Route::post('/foro/guardar','foroController@guardar');
+
+
+Route::post('/foro/respuesta/guardar','foroController@guardar_respuesta');
+
+Route::get('respuesta/eliminar/{idrespuesta}/', [
+    'uses' =>'foroController@eliminar_respuesta',   
+    'as' => 'respuesta.eliminar'
+]);
+
+
+//entrega
+
+Route::get('entrega/', [
+    'uses' =>'entregaController@listar', 
+    'as' => 'entrega_listar' 
+]);
+
+Route::get('entrega/nuevo/', [
+    'uses' =>'entregaController@nuevo', 
+    'as' => 'entrega_crear' 
+]);
+
+
+Route::get('entrega/ver/{identrega}/',[
+    'uses'=> 'entregaController@ver',
+    'as'=> 'entrega_ver'
+]);
+
+Route::post('/entrega/guardar','entregaController@guardar');
+
+Route::post('entrega/actualizar/{identrega}/', [
+    'uses'=>'entregaController@actualizar',
+    'as'=>'entrega.actualizar'
+]);
+Route::post('entrega/actualizar2/{identrega}/', [
+    'uses'=>'entregaController@actualizar2',
+    'as'=>'entrega.actualizar2'
+]);
+Route::get('entrega/editar/{identrega}/',[
+    'uses'=> 'entregaController@editar',
+    'as'=> 'entrega.editar'
+]);
+//login
+Route::get('/longin',function(){
+    return view('login');
+});
+
+// PDF
+Route::get('/pdf/prueba', 'PDFController@PDF')->name('descargarPDF');
+Route::get('/pdf/estudiantes', 'PDFController@PDFEstudiantes')->name('descargarPDFEstudiantes');
 
 

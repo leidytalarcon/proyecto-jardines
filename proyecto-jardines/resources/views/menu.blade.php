@@ -1,4 +1,4 @@
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         
     <!-- Sidebar - Brand -->
@@ -153,7 +153,7 @@ aria-expanded="true" aria-controls="collapsePages4">
     <h6 class="collapse-header">Ventanas:</h6>
     <a class="collapse-item" href="/">Ver temas</a>
     <a class="collapse-item" href="/"> Ver Tareas</a>
-    <a class="collapse-item" href="/"> Participar foro</a>
+    <a class="collapse-item" id="foro" href="/"> Participar foro</a>
     <div class="collapse-divider"></div>                          
 </div>
 </div>
@@ -172,3 +172,14 @@ aria-expanded="true" aria-controls="collapsePages4">
 
 </ul>
 <!-- End of Sidebar -->
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        $('#foro').click(function(e) {
+            e.preventDefault();
+            route_list = '{{ route('foro.index') }}';
+
+            window.location.href = route_list;
+        });
+    });
+</script>
