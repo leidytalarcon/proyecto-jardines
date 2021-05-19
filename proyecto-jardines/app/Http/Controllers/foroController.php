@@ -16,16 +16,58 @@ class foroController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public function index()
+    {
+        return view('foro.foro_listar');
+
+    }
+
     public function listar(){
 
         $foros = foro::all();
-        return view('foro.foro_listar',compact('foros')); 
+        return response()->json($foros, 200);
     }
 
     public function editar($idforo){
         $foro = foro::find($idforo);
         return view('foro.foro_editar',compact('foro')); 
     }
+
+    public function actualizar(Request $request,$idforo){
+        $foro = foro::find($idforo);
+        $foro['nombre'] = $request['nombre'];
+        $foro['contenido']=$request['contenido'];
+       
+
+        $foro->update();
+       
+        $foros = foro::all();
+  
+          return view('foro.foro_listar',compact('foros')); 
+    }
+
+    public function nuevo(){
+        
+        return view('foro.foro_crear');
+    }
+
+    public function guardar(Request $request){
+        
+        foro::create([
+
+            'nombre' => $request['nombre'],
+            'contenido' => $request['contenido'],
+            'docente_iddocente' => 1,
+            'tema_idtema' =>1
+           
+          ]);
+          $foros = foro::all();
+  
+          return view('foro.foro_listar',compact('foros')); 
+    }
+
+    // COMENTARIOS
+
     public function comentario($idforo){
         $foro = foro::find($idforo);
         return view('foro.foro_comentario',compact('foro'));
@@ -33,11 +75,8 @@ class foroController extends BaseController
     public function nuevocomentario($idforo){
         
         return view('foro.nuevo_comentario',compact('idforo'));
-
-
     }
     
-
     public function guardar_comentario(Request $request){
         
         foro_comentario::create([
@@ -52,6 +91,8 @@ class foroController extends BaseController
         $foro = foro::find($request['idforo']);
         return view('foro.foro_comentario',compact('foro')); 
     }
+
+    //RESPUESTA
 
     public function guardar_respuesta(Request $request){
         
@@ -78,38 +119,4 @@ class foroController extends BaseController
           return redirect()->route('foro.comentarios', $foro->idforo);
     }
 
-
-    public function nuevo(){
-        
-        return view('foro.foro_crear');
-    }
-
-    public function guardar(Request $request){
-        
-        foro::create([
-
-            'nombre' => $request['nombre'],
-            'contenido' => $request['contenido'],
-            'docente_iddocente' => 1,
-            'tema_idtema' =>1
-           
-          ]);
-          $foros = foro::all();
-  
-          return view('foro.foro_listar',compact('foros')); 
-    }
-
-    public function actualizar(Request $request,$idforo){
-        $foro = foro::find($idforo);
-        $foro['nombre'] = $request['nombre'];
-        $foro['contenido']=$request['contenido'];
-       
-
-        $foro->update();
-       
-        $foros = foro::all();
-  
-          return view('foro.foro_listar',compact('foros')); 
-    }
-    
 }

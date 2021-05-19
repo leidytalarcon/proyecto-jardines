@@ -119,6 +119,19 @@ INSERT INTO `estudiante` (`id_estudiante`, `documento`, `nombre`, `nombre_padre`
 (4, 5678, 'natalia peña', 'Natalia peña', '2021-04-24', 'Calle 15 ##18-74', 'penanatalia56@gmail.com', '3213131', 'npena', 'npena', 1, 1, 4),
 (5, 6789, 'natalia peña', 'Natalia peña', '2021-04-13', 'Calle 15 ##18-74', 'penanatalia56@gmail.com', '3213131', 'natalia', 'npena', 1, 1, 4);
 
+
+CREATE TABLE `curso_estudiante` (
+  `idcursoestudiante` int(11) AUTO_INCREMENT NOT NULL,
+  `estado` bit DEFAULT NULL,
+  `fecha_creacion` varchar(45) DEFAULT NULL,
+  `curso_idcurso` varchar(45) DEFAULT NULL,
+  `estudiante_idestudiante` int(11) NOT NULL,
+  PRIMARY KEY(idcursoestudiante)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO curso_estudiante(estado,fecha_creacion,curso_idcurso,estudiante_idestudiante)
+VALUES(1,NOW(),1,1);
+
 -- --------------------------------------------------------
 
 --

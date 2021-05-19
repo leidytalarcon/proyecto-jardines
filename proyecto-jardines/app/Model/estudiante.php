@@ -28,9 +28,16 @@ class estudiante extends Model
         'institucion_id_jardin',
         'curso_id_curso',
         'rol_id_rol'
-
-
     ];
 
+    public function comentarios()
+    {
+        return $this->hasMany('App\Model\foro_comentario','estudiante_idestudiante','id_estudiante');
+    }
+
+    public function cursos()
+    {
+        return $this->belongsToMany(curso::class,'curso_estudiante','estudiante_idestudiante','curso_idcurso')->using(curso_estudiante::class)->withPivot('idcursoestudiante');
+    }
   
 }

@@ -22,5 +22,13 @@ class curso extends Model
         'docente_id_docente'
     ];
 
-  
+    public function estudiantes()
+    {
+        return $this->belongsToMany(estudiante::class,'curso_estudiante','curso_idcurso','estudiante_idestudiante')->using(curso_estudiante::class)->withPivot('idcursoestudiante');
+    }
+
+    public function docente()
+    {
+        return $this->belongsTo('App\Model\docente', 'docente_id_docente', 'id_docente');
+    }
 }

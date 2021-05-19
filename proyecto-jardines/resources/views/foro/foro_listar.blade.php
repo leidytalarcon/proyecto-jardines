@@ -17,13 +17,13 @@
                                     <div class="col-lg-12 margin-tb">
                                         
                                         <div class="pull-right">
-                                            <a class="btn btn-primary" href="{{ route('foro.nuevo') }}">Crear foro</a>
+                                            <a class="btn btn-primary" id="foro_nuevo" href="/">Crear foro</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <table class="table table-bordered" id="tableForos" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th>Nombre</th>
@@ -35,26 +35,6 @@
                                             </thead>
                                             <tbody>
 
-                                                @foreach($foros as $foro ),
-                                                <tr>
-                                                    <td>{{ $foro["nombre"]}} </td>
-                                                    <td>{{ $foro["contenido"]}} </td>
-                                            
-                                                    <td>{{ $foro["tema_idtema"]}} </td>
-                                                    <td>{{ $foro["docente_iddocente"]}} </td>
-                                                    
-                                                   
-                                                    <td>
-                                                        <a class="btn btn-info" href="{{ route('foro.editar',$foro['idforo']) }}">
-                                                            <i class="fas fa-edit"></i> 
-                                                        </a>
-                                                     </td>
-                                                     <td>
-                                                        <a class="btn btn-info" href="{{ route('foro.comentarios',$foro['idforo']) }}">Comentarios</a>
-                                                     </td>
-
-                                                </tr>
-                                                @endforeach
                                                
                                             </tbody>
                                         </table>
@@ -66,5 +46,54 @@
                         <!-- /.container-fluid -->
 
                         <!-- FIN CONTENIDO -->
+
+                        <script>
+                            jQuery(document).ready(function () {
+                                var _t = $('input[name="_token"]').val();  //you need add a token
+                                var v = $(this).val();
+                                $.ajax({
+                                 url:"{{ route('foro.listar') }}",
+                                     method: "GET",
+                                 dataType: 'JSON',
+                                 data:{_t:_t, v:v},
+
+                                 success:function(data){
+                                     
+                                     for(var c in data){
+                                        var idforo = data[c].idforo;
+                                        var row = '<tr>'+
+                                            '<td>'+ data[c].nombre +'</td>'+
+                                            '<td>'+ data[c].contenido +'</td>'+
+                                            '<td>'+ data[c].tema_idtema +'</td>'+
+                                            '<td>'+ data[c].docente_iddocente +'</td>'+
+                                            
+                                              
+                                            '<td>'+
+                                                "<a class=\"btn btn-info\" href=\"{{ route('foro.editar',"idforo") }}\">"+
+                                                    '<i class="fas fa-edit"></i>'+
+                                                '</a>'   +                                      
+                                            '</td>'+
+
+                                            '<td>'+
+                                                "<a class=\"btn btn-info\" href=\"{{ route('foro.comentarios',"idforo") }}\">Comentarios</a>"+
+                                            '</td>'+
+                                        
+                                            '</tr>'
+                                        
+                                        $('#tableForos').append(row.replaceAll("idforo", idforo)
+                                        );
+                                    }
+                                }
+                            });
+
+                            $('#foro_nuevo').click(function(e) {
+                                e.preventDefault();
+                                route_list = '{{ route('foro.nuevo') }}';
+                    
+                                window.location.href = route_list;
+                            });
+
+                            });
+                        </script>
       
     @endsection

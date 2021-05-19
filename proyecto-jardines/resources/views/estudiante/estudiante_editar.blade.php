@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-md-15 mt" >
                 <div class="form_register">
-                  <form action="{{ route('estudiante.actualizar',$estudiante['Id_estudiante']) }}" method="POST">
+                  <form action="{{ route('estudiante.actualizar',$estudiante['id_estudiante']) }}" method="POST">
                     @csrf
                           
                         <div class="header-center">EDITAR ESTUDIANTE</div>
