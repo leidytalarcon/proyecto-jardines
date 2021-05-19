@@ -1,5 +1,5 @@
 
-@extends('layout2')
+@extends('layout_external')
 @section('content')
 <body class="bg-gradient-primary">
 
@@ -20,15 +20,15 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" id="loginForm">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                id="email"  name="email" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address...">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                                id="password" name="password" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -37,19 +37,14 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                            <button type="submit" id="submit" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </a>
                                         <hr>
                                         
                                     </form>
                                     <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -64,3 +59,38 @@
 
    
     @endsection
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {//clasesin
+    
+            $('#loginForm').on('submit',function(event){
+                event.preventDefault();
+        
+                let email = $('#email').val();
+                let password = $('#password').val();
+        
+                $.ajax({
+                  url: '{{ route('auth.login') }}',
+                  type:"POST",
+                  data:{
+                    email:email,
+                    password:password
+                  },
+                  success:function(response){
+                    console.log(response);
+                   
+                    route_list = '{{ route('inicio') }}';
+
+                    window.location.href = route_list;
+                  },
+                  error: function(xhr, status, error){
+                    var errorMessage = xhr.status + ': ' + xhr.statusText
+                    alert('Error - ' + errorMessage);
+                }
+                });
+            });
+    
+        });
+    
+       
+    </script>

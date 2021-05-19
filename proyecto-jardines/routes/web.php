@@ -15,8 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
   
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
+
+Route::get('inicio/', [
+    'uses' =>'ApiController@inicio', 
+    'as' => 'inicio' 
+]);
+
 Route::get('/informacionJardin',function(){
     return view('jardines');
 });
@@ -78,10 +84,7 @@ Route::get('curso/index', [
    'as' => 'curso.index' 
 ]);
 
-Route::get('curso/', [
-    'uses' =>'cursoController@listar', 
-    'as' => 'curso.listar' 
-]);
+
 
 Route::get('curso/editar/{id_curso}/', [
     'uses' =>'cursoController@editar',   
@@ -237,10 +240,7 @@ Route::get('foro/index', [
    'as' => 'foro.index' 
 ]);
 
-Route::get('foro/', [
-     'uses' =>'foroController@listar', 
-    'as' => 'foro.listar' 
-]);
+
 Route::get('foro/editar/{idforo}/', [
     'uses' =>'foroController@editar',   
     'as' => 'foro.editar'
@@ -316,3 +316,24 @@ Route::get('/pdf/prueba', 'PDFController@PDF')->name('descargarPDF');
 Route::get('/pdf/estudiantes', 'PDFController@PDFEstudiantes')->name('descargarPDFEstudiantes');
 
 
+Route::post('register', 'ApiController@register');
+
+Route::post('auth/login/', [
+    'uses' =>'ApiController@login', 
+   'as' => 'auth.login' 
+]);
+ 
+Route::group(['middleware' => 'auth.jwt'], function () {
+    Route::get('logout', 'ApiController@logout');
+ 
+    Route::get('user', 'ApiController@getAuthUser');
+    Route::get('foro/', [
+        'uses' =>'foroController@listar', 
+       'as' => 'foro.listar' 
+   ]);
+
+   Route::get('curso/', [
+    'uses' =>'cursoController@listar', 
+    'as' => 'curso.listar' 
+]);
+});
