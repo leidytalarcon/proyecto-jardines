@@ -16,6 +16,11 @@ class tareaController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public function index()
+    {
+        return view('tarea.tarea_listar');
+
+    }
     public function listar(){
         $titulo = 'Titulo';
         $tareas = tarea::all();

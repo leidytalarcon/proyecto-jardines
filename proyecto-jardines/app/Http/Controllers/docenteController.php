@@ -16,6 +16,11 @@ class docenteController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public function index()
+    {
+        return view('docente.docente_listar');
+
+    }
     public function listar(){
             $titulo = 'Titulo';
             $curl = new Curl();

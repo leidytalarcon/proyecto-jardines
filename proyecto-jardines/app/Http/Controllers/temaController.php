@@ -18,6 +18,11 @@ class temaController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public function index()
+    {
+        return view('tema.tema_listar');
+
+    }
     public function listar(){
         $titulo = 'Titulo';
         $temas = tema::all();

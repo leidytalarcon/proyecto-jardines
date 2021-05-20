@@ -27,6 +27,11 @@ Route::get('/informacionJardin',function(){
     return view('jardines');
 });
 
+Route::get('institucion/index', [
+    'uses' =>'institucionController@index', 
+   'as' => 'institucion.index' 
+]);
+
 Route::get('institucion/', [
     'uses' =>'institucionController@listar', 
     'as' => 'institucion.listar' 
@@ -139,6 +144,11 @@ Route::post('curso/actualizar/{id_curso}/', [
     'as' => 'curso.actualizar'
 ]);
 //Docente
+Route::get('docente/index', [
+    'uses' =>'docenteController@index', 
+   'as' => 'docente.index' 
+]);
+
 Route::get('docente/', [
     'uses' =>'docenteController@listar', 
     'as' => 'docente_listar' 
@@ -160,7 +170,11 @@ Route::post('docente/actualizar/{id_docente}/', [
     'uses' =>'docenteController@actualizar',   
     'as' => 'docente.actualizar'
 ]);
-
+//tarea
+Route::get('tarea/index', [
+    'uses' =>'tareaController@index', 
+   'as' => 'tarea.index' 
+]);
 Route::get('tarea/', [
     'uses' =>'tareaController@listar', 
     'as' => 'tarea_listar' 
@@ -182,6 +196,12 @@ Route::get('tarea/editar/{idtarea}/',[
     'uses'=> 'tareaController@editar',
     'as'=> 'tarea.editar'
 ]);
+//tema
+Route::get('tema/index', [
+    'uses' =>'temaController@index', 
+   'as' => 'tema.index' 
+]);
+
 Route::get('tema/', [
     'uses' =>'temaController@listar', 
     'as' => 'tema_listar' 
@@ -204,7 +224,10 @@ Route::get('tema/editar/{idtema}/',[
     'as'=> 'tema.editar'
 ]);
 /////////////////////RECTOR////////////////////////////////////////
-
+Route::get('rector/index', [
+    'uses' =>'rectorController@index', 
+   'as' => 'rector.index' 
+]);
 Route::get('rector/', [
     'uses'=>'RectorController@listar',
     'as' => 'rector_listar'

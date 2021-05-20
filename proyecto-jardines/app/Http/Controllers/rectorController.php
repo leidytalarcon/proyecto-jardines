@@ -15,6 +15,11 @@ class rectorController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public function index()
+    {
+        return view('rector.rector_listar');
+
+    }
     public function listar(){
         $titulo = 'Titulo';
         $rector = rector::all();

@@ -15,6 +15,11 @@ class institucionController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public function index()
+    {
+        return view('institucion.institucion_listar');
+
+    }
     public function listar(){
         $titulo = 'Titulo';
         $instituciones = institucion::all();

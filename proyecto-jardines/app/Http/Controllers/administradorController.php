@@ -14,6 +14,11 @@ class administradorController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public function index()
+    {
+        return view('administrador.administrador_listar');
+
+    }
     public function listar(){
         $administradores = administrador::all();
     }

@@ -88,10 +88,10 @@ aria-expanded="true" aria-controls="collapsePages1">
 <div class="bg-white py-2 collapse-inner rounded">
     <h6 class="collapse-header">RECTOR:</h6>
     <a class="collapse-item" href="{{ route('rector_crear') }}"> Registro Rector</a>
-    <a class="collapse-item" href="/"> ver Rector</a>
+    <a class="collapse-item" id="rector" href="/">Listar Rectores</a>
     <h6 class="collapse-header">JARDINES:</h6>
     <a class="collapse-item" href="{{ route('institucion.nuevo') }}">Registro Jardines</a>
-    <a class="collapse-item" href="{{ route('institucion.listar') }}">Ver Jardines</a>
+    <a class="collapse-item" id="institucion" href="/">Ver Jardines</a>
     <div class="collapse-divider"></div>                           
 </div>
 </div>
@@ -108,7 +108,7 @@ aria-expanded="true" aria-controls="collapsePages2">
 <div class="bg-white py-2 collapse-inner rounded">
     <h6 class="collapse-header">DOCENTE:</h6>
     <a class="collapse-item" href="{{ route('docente_crear') }}">Registro Docentes</a>
-    <a class="collapse-item" href="{{ route('docente_listar') }}">Ver Docentes</a>
+    <a class="collapse-item" id="docente" href="/">Ver Docentes</a>
     <a class="collapse-header">CURSO:</a>
     <a class="collapse-item" href="{{ route('curso.nuevo') }}">Registro cursos</a>
     <a class="collapse-item" id="curso" href="/">Listar curso</a>
@@ -132,9 +132,9 @@ aria-expanded="true" aria-controls="collapsePages3">
 <div id="collapsePages3" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 <div class="bg-white py-2 collapse-inner rounded">
     <h6 class="collapse-header">TEMAS:</h6>
-    <a class="collapse-item" href="{{ route('tema_listar') }}">Registrar temas</a>
-    <a class="collapse-item" href="{{ route('tarea_listar') }}">Registrar Tareas</a>
-    <a class="collapse-item" href="/">Agregar foro</a>
+    <a class="collapse-item" id="tema" href="/">Registrar temas</a>
+    <a class="collapse-item" id="tarea" href="/">Registrar Tareas</a>
+    <a class="collapse-item" id="foro" href="/">Agregar foro</a>
     <div class="collapse-divider"></div>
   
 </div>
@@ -177,9 +177,25 @@ aria-expanded="true" aria-controls="collapsePages4">
 <script type="text/javascript">
     jQuery(document).ready(function () {//clasesin
 
-        $('#foro').click(function(e) {
+    
+        $('#institucion').click(function(e) {
             e.preventDefault();
-            route_list = '{{ route('foro.index') }}';
+            route_list = '{{ route('institucion.index') }}';
+
+            window.location.href = route_list;
+        });
+
+        
+        $('#rector').click(function(e) {
+            e.preventDefault();
+            route_list = '{{ route('rector.index') }}';
+
+            window.location.href = route_list;
+        });
+
+        $('#docente').click(function(e) {
+            e.preventDefault();
+            route_list = '{{ route('docente.index') }}';
 
             window.location.href = route_list;
         });
@@ -190,6 +206,7 @@ aria-expanded="true" aria-controls="collapsePages4">
 
             window.location.href = route_list;
         });
+        
         $('#curso').click(function(e) {
             e.preventDefault();
             route_list = '{{ route('curso.index') }}';
@@ -197,6 +214,26 @@ aria-expanded="true" aria-controls="collapsePages4">
             window.location.href = route_list;
         });
 
+        $('#foro').click(function(e) {
+            e.preventDefault();
+            route_list = '{{ route('foro.index') }}';
+
+            window.location.href = route_list;
+        });
+
+        $('#tema').click(function(e) {
+            e.preventDefault();
+            route_list = '{{ route('tema.index') }}';
+
+            window.location.href = route_list;
+        });
+        $('#tarea').click(function(e) {
+            e.preventDefault();
+            route_list = '{{ route('tarea.index') }}';
+
+            window.location.href = route_list;
+        });
+        
     });
 
    
