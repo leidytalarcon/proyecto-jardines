@@ -34,19 +34,6 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($instituciones as $institucion )
-                                                <tr>
-                                                    <td>{{ $institucion["Id_jardin"]}} </td>
-                                                    <td>{{ $institucion["Nombre_jardin"]}} </td>
-                                                    <td>{{ $institucion["Nit_jardin"]}} </td>
-                                                    <td>{{ $institucion["Direccion"]}} </td>
-
-                                                    <td>
-                                                        <a class="btn btn-info" href="{{ route('institucion.editar',$institucion['Id_jardin']) }}">Editar</a>
-                                                     </td>
-                                                </tr>
-                                               
-                                                @endforeach
                                                
                                             </tbody>
                                         </table>
@@ -58,5 +45,52 @@
                         <!-- /.container-fluid -->
 
                         <!-- FIN CONTENIDO -->
+                        <script>
+                            jQuery(document).ready(function () {
+                                var _t = $('input[name="_token"]').val();  //you need add a token
+                                var v = $(this).val();
+                                $.ajax({
+                                 url:"{{ route('institucion.listar') }}",
+                                     method: "GET",
+                                 dataType: 'JSON',
+                                 data:{_t:_t, v:v},
+
+                                 success:function(data){
+                                     
+                                     for(var c in data){
+                                        var idinstitucion = data[c].id_institucion;
+                                        var
+                                         idcurso = data[c].id_curso
+                                        var row = '<tr>'+
+                                            '<td>'+ data[c].documento +'</td>'+
+                                            '<td>'+ data[c].nombre +'</td>'+
+                                            '<td>'+ data[c].correo +'</td>'+
+                                            '<td>'+ data[c].telefono +'</td>'+
+                                            '<td>'+ data[c].curso +'</td>'+
+                                            
+                                            '<td>'+
+                                                "<a class=\"btn btn-info\" href=\"{{ route('institucion.editar',"idinstitucion") }}\">"+
+                                                    '<i class="fas fa-edit"></i>'+
+                                                '</a>'   +                                      
+                                            '</td>'+
+                                            
+                                            '</tr>'
+                                        
+                                        $('#tableinstitucion').append(row.replaceAll("idinstitucion", idinstitucion)
+                                        );
+                                    }
+                                }
+                            });
+
+                            $('#institucion_nuevo').click(function(e) {
+                                e.preventDefault();
+                                route_list = '{{ route('institucion.nuevo') }}';
+                    
+                                window.location.href = route_list;
+                            });
+                            });
+
+                            
+                        </script>
       
     @endsection

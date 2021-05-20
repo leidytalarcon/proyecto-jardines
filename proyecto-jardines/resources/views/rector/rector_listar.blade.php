@@ -39,23 +39,6 @@
                                             </thead>
                                             <tbody>
 
-                                                @foreach($rector as $rector )
-                                                <tr>
-                                                    <td>{{ $rector["id_rector"]}} </td>
-                                                    <td>{{ $rector["documento_rector"]}} </td>
-                                                    <td>{{ $rector["nombre_rector"]}} </td>
-                                                    <td>{{ $rector["telefono"]}} </td>
-                                                    <td>{{ $rector["username"]}} </td>
-                                                    <td>{{ $rector["contrasena"]}} </td>
-                                                    <td>{{ $rector["institucion_id_jardin"]}} </td>
-                                                    <td>{{ $rector["rol_id_rol"]}} </td>
-                                                    <td>
-                                                        <a class="btn btn-info" href="{{ route('rector.editar',$rector['id_rector']) }}">Editar</a>
-                                                     </td>
-                                                </tr>
-                                               
-                                                @endforeach
-                                               
                                             </tbody>
                                         </table>
                                     </div>
@@ -66,5 +49,51 @@
                         <!-- /.container-fluid -->
 
                         <!-- FIN CONTENIDO -->
+                        <script>
+                            jQuery(document).ready(function () {
+                                var _t = $('input[name="_token"]').val();  //you need add a token
+                                var v = $(this).val();
+                                $.ajax({
+                                 url:"{{ route('docente.listar') }}",
+                                     method: "GET",
+                                 dataType: 'JSON',
+                                 data:{_t:_t, v:v},
+
+                                 success:function(data){
+                                     
+                                     for(var c in data){
+                                        var iddocente = data[c].id_docente;
+                                        var idcurso = data[c].id_curso
+                                        var row = '<tr>'+
+                                            '<td>'+ data[c].documento +'</td>'+
+                                            '<td>'+ data[c].nombre +'</td>'+
+                                            '<td>'+ data[c].correo +'</td>'+
+                                            '<td>'+ data[c].telefono +'</td>'+
+                                            '<td>'+ data[c].curso +'</td>'+
+                                            
+                                            '<td>'+
+                                                "<a class=\"btn btn-info\" href=\"{{ route('docente.editar',"iddocente") }}\">"+
+                                                    '<i class="fas fa-edit"></i>'+
+                                                '</a>'   +                                      
+                                            '</td>'+
+                                            
+                                            '</tr>'
+                                        
+                                        $('#tableDocente').append(row.replaceAll("iddocente", iddocente)
+                                        );
+                                    }
+                                }
+                            });
+
+                            $('#docente_nuevo').click(function(e) {
+                                e.preventDefault();
+                                route_list = '{{ route('docente.nuevo') }}';
+                    
+                                window.location.href = route_list;
+                            });
+                            });
+
+                            
+                        </script>
       
     @endsection
