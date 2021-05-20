@@ -23,26 +23,18 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <table class="table table-bordered" id="tabletarea" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
+                                                    <th>tema</th>
                                                     <th>numero</th>
                                                     <th>Nombre</th>
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($tareas as $tarea )
-                                                <tr>
-                                                    <td>{{ $tarea["idtarea"]}} </td>
-                                                    <td>{{ $tarea["nombre"]}} </td>
-
-                                                    <td>
-                                                        <a class="btn btn-info" href="{{ route('tarea.editar',$tarea['idtarea']) }}">Editar</a>
-                                                     </td>
-                                                </tr>
-                                               
-                                                @endforeach
-                                               
+                                                
+                                                
                                             </tbody>
                                         </table>
                                     </div>
@@ -53,5 +45,47 @@
                         <!-- /.container-fluid -->
 
                         <!-- FIN CONTENIDO -->
+                        <script>
+                            jQuery(document).ready(function () {
+                                var _t = $('input[name="_token"]').val();  //you need add a token
+                                var v = $(this).val();
+                                $.ajax({
+                                 url:"{{ route('tarea.listar') }}",
+                                     method: "GET",
+                                 dataType: 'JSON',
+                                 data:{_t:_t, v:v},
+
+                                 success:function(data){
+                                     
+                                     for(var c in data){
+                                        var idtarea = data[c].id_tarea;
+                                        var row = '<tr>'+
+                                            '<td>'+ data[c].numero +'</td>'+
+                                            '<td>'+ data[c].nombre +'</td>'+
+                                            
+                                            '<td>'+
+                                                "<a class=\"btn btn-info\" href=\"{{ route('tarea.editar',"idtarea") }}\">"+
+                                                    '<i class="fas fa-edit"></i>'+
+                                                '</a>'   +                                      
+                                            '</td>'+
+                                            
+                                            '</tr>'
+                                        
+                                        $('#tabletarea').append(row.replaceAll("idtarea", idtarea)
+                                        );
+                                    }
+                                }
+                            });
+
+                            $('#tarea_nuevo').click(function(e) {
+                                e.preventDefault();
+                                route_list = '{{ route('tarea.nuevo') }}';
+                    
+                                window.location.href = route_list;
+                            });
+                            });
+
+                            
+                        </script>
       
     @endsection

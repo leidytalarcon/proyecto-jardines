@@ -23,12 +23,11 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <table class="table table-bordered" id="tableinstitucion" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
-                                                    <th>Id</th>
-                                                    <th>Nombre</th>
                                                     <th>Nit</th>
+                                                    <th>Nombre</th>
                                                     <th>Direccion</th>
                                                     <th>Acciones</th>
                                                 </tr>
@@ -59,14 +58,10 @@
                                      
                                      for(var c in data){
                                         var idinstitucion = data[c].id_institucion;
-                                        var
-                                         idcurso = data[c].id_curso
                                         var row = '<tr>'+
-                                            '<td>'+ data[c].documento +'</td>'+
+                                            '<td>'+ data[c].nit +'</td>'+
                                             '<td>'+ data[c].nombre +'</td>'+
-                                            '<td>'+ data[c].correo +'</td>'+
-                                            '<td>'+ data[c].telefono +'</td>'+
-                                            '<td>'+ data[c].curso +'</td>'+
+                                            '<td>'+ data[c].direccion +'</td>'+
                                             
                                             '<td>'+
                                                 "<a class=\"btn btn-info\" href=\"{{ route('institucion.editar',"idinstitucion") }}\">"+

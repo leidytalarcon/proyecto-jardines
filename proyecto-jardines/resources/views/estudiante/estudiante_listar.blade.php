@@ -31,6 +31,7 @@
                                                     <th>Direccion</th> 
                                                     <th>Correo</th> 
                                                     <th>Tel</th>
+                                                    <th>Curso</th>
                                                     <th>Acción</th>
                                                 </tr>
                                             </thead>

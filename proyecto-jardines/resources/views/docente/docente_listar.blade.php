@@ -23,7 +23,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <table class="table table-bordered" id="tabledocente" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     
@@ -33,6 +33,7 @@
                                                     <th>Telefono</th>
                                                     <th>Curso</th>
                                                     
+                                                    <th>acción</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -60,7 +61,6 @@
                                      
                                      for(var c in data){
                                         var iddocente = data[c].id_docente;
-                                        var idcurso = data[c].id_curso
                                         var row = '<tr>'+
                                             '<td>'+ data[c].documento +'</td>'+
                                             '<td>'+ data[c].nombre +'</td>'+
@@ -76,7 +76,7 @@
                                             
                                             '</tr>'
                                         
-                                        $('#tableDocente').append(row.replaceAll("iddocente", iddocente)
+                                        $('#tabledocente').append(row.replaceAll("iddocente", iddocente)
                                         );
                                     }
                                 }

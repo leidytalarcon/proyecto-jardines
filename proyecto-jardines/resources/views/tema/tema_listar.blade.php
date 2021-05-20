@@ -23,7 +23,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <table class="table table-bordered" id="tabletema" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th>numero</th>
@@ -31,17 +31,6 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($temas as $tema )
-                                                <tr>
-                                                    <td>{{ $tema["idtema"]}} </td>
-                                                    <td>{{ $tema["nombre"]}} </td>
-
-                                                    <td>
-                                                        <a class="btn btn-info" href="{{ route('tema.editar',$tema['idtema']) }}">Editar</a>
-                                                     </td>
-                                                </tr>
-                                               
-                                                @endforeach
                                                
                                             </tbody>
                                         </table>
@@ -53,5 +42,47 @@
                         <!-- /.container-fluid -->
 
                         <!-- FIN CONTENIDO -->
+                        <script>
+                            jQuery(document).ready(function () {
+                                var _t = $('input[name="_token"]').val();  //you need add a token
+                                var v = $(this).val();
+                                $.ajax({
+                                 url:"{{ route('tema.listar') }}",
+                                     method: "GET",
+                                 dataType: 'JSON',
+                                 data:{_t:_t, v:v},
+
+                                 success:function(data){
+                                     
+                                     for(var c in data){
+                                        var idtema = data[c].id_tema;
+                                        var row = '<tr>'+
+                                            '<td>'+ data[c].numero +'</td>'+
+                                            '<td>'+ data[c].nombre +'</td>'+
+                                            
+                                            '<td>'+
+                                                "<a class=\"btn btn-info\" href=\"{{ route('tema.editar',"idtema") }}\">"+
+                                                    '<i class="fas fa-edit"></i>'+
+                                                '</a>'   +                                      
+                                            '</td>'+
+                                            
+                                            '</tr>'
+                                        
+                                        $('#tabletema').append(row.replaceAll("idtema", idtema)
+                                        );
+                                    }
+                                }
+                            });
+
+                            $('#tema_nuevo').click(function(e) {
+                                e.preventDefault();
+                                route_list = '{{ route('tema.nuevo') }}';
+                    
+                                window.location.href = route_list;
+                            });
+                            });
+
+                            
+                        </script>
       
     @endsection
