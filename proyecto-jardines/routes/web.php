@@ -371,4 +371,8 @@ Route::group(['middleware' => 'auth.jwt'], function () {
  
     Route::get('user', 'ApiController@getAuthUser');
     
+    Route::get('foro/obtener/', [
+        'uses' =>'foroController@listar', 
+       'as' => 'foro.obtener' 
+    ]);
 });
