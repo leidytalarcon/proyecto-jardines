@@ -37,6 +37,9 @@ CREATE TABLE `administrador` (
   `contrasena` varchar(45) DEFAULT NULL,
   `rol_id_rol` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--
+INSERT INTO mydb.administrador(documento_Admin, nombre_admin,telefono,username,contrasena,rol_id_rol)
+VALUES(1234,'admin2',12344,'admin@2.com','asdasd',1);
 
 -- --------------------------------------------------------
 
@@ -406,3 +409,7 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+ALTER TABLE mydb.tema
+ADD numero int null;
+
