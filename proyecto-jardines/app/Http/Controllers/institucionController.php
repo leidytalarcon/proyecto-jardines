@@ -20,11 +20,11 @@ class institucionController extends BaseController
         return view('institucion.institucion_listar');
 
     }
+   
     public function listar(){
-        $titulo = 'Titulo';
-        $instituciones = institucion::all();
 
-        return view('institucion.institucion_listar',compact('titulo','instituciones')); 
+        $institucion =institucion::all();
+        return response()->json($institucion, 200);
     }
 
     public function editar($id_jardin){

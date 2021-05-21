@@ -26,14 +26,11 @@
                               <label for=""class="col-12">TAREA A REALIZAR</label>
                               <input type="file" class="form-control col-md-15" name="tarea_doc" id="tarea_doc">
                             </div>
-                            <div class="form-group">
-                              <label for=""class="col-12">TAREA REALIZADA</label>
-                              <input type="file" class="form-control col-md-15" name="tarea_est" id="tarea_est">
-                            </div>
+                           
                             <strong>TEMA</strong>
                             <br>
                          <select name="id_tema" style="width:500px" id="tema_idtema">
-                         <option value="">TEMA</option>
+                        
                          @foreach($temas as $tema)
                             <option value="{{$tema['idtema']}}">{{$tema['nombre']}}</option> 
                          

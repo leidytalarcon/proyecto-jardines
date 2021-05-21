@@ -24,11 +24,11 @@ class temaController extends BaseController
 
     }
     public function listar(){
-        $titulo = 'Titulo';
-        $temas = tema::all();
 
-        return view('tema.tema_listar',compact('titulo','temas')); 
+        $tema = tema::all();
+        return response()->json($tema, 200);
     }
+
 
     public function editar($idtema){
         $temas = tema::find($idtema);

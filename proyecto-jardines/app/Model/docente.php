@@ -28,4 +28,8 @@ class docente extends Model
     ];
 
   
+    public function institucion()
+    {
+        return $this->belongsTo('App\Model\institucion', 'id_jardin','institucion_id_jardin' );
+    }
 }

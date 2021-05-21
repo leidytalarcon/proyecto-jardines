@@ -37,7 +37,7 @@
                             <strong>Registrado por</strong>
                             <br>
                          <select name="id_admin" style="width:500px" id="administrador_id_admin">
-                         <option value="">Administrador</option>
+                         
                          @foreach($administradores as $administrador){
                             <option value="{{$administrador['id_admin']}}">{{$administrador['nombre_admin']}}</option> 
                          }

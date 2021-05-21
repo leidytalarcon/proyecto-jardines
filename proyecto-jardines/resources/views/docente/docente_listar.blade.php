@@ -17,7 +17,7 @@
                                     <div class="col-lg-12 margin-tb">
                                         
                                         <div class="pull-right">
-                                            <a class="btn btn-primary" href="{{ route('docente_crear') }}">Crear docente</a>
+                                            <a class="btn btn-primary" id="docente_nuevo">Crear docente</a>
                                         </div>
                                     </div>
                                 </div>
@@ -31,7 +31,6 @@
                                                     <th>Nombre</th>
                                                     <th>Correo</th> 
                                                     <th>Telefono</th>
-                                                    <th>Curso</th>
                                                     
                                                     <th>acción</th>
                                                 </tr>
@@ -66,7 +65,6 @@
                                             '<td>'+ data[c].nombre +'</td>'+
                                             '<td>'+ data[c].correo +'</td>'+
                                             '<td>'+ data[c].telefono +'</td>'+
-                                            '<td>'+ data[c].curso +'</td>'+
                                             
                                             '<td>'+
                                                 "<a class=\"btn btn-info\" href=\"{{ route('docente.editar',"iddocente") }}\">"+
@@ -80,8 +78,7 @@
                                         );
                                     }
                                 }
-                            });
-
+                            }); 
                             $('#docente_nuevo').click(function(e) {
                                 e.preventDefault();
                                 route_list = '{{ route('docente.nuevo') }}';

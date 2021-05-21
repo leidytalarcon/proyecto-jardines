@@ -17,7 +17,7 @@
                                     <div class="col-lg-12 margin-tb">
                                         
                                         <div class="pull-right">
-                                            <a class="btn btn-primary" href="{{ route('tarea_crear') }}">Crear tarea</a>
+                                            <a class="btn btn-primary" id="tarea_nuevo">Crear tarea</a>
                                         </div>
                                     </div>
                                 </div>

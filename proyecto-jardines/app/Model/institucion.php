@@ -26,5 +26,9 @@ class institucion extends Model
         'administrador_id_admin'
     ];
 
+    public function docentes()
+    {
+        return $this->hasMany('App\Model\docente','institudcion_id_jardin','id_jardin');
+    }
   
 }

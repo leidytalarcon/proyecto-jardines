@@ -17,7 +17,7 @@
                                     <div class="col-lg-12 margin-tb">
                                         
                                         <div class="pull-right">
-                                            <a class="btn btn-primary" href="{{ route('institucion.nuevo') }}">Crear jardin</a>
+                                            <a class="btn btn-primary" id="institucion_nuevo">Crear jardin</a>
                                         </div>
                                     </div>
                                 </div>
@@ -57,10 +57,10 @@
                                  success:function(data){
                                      
                                      for(var c in data){
-                                        var idinstitucion = data[c].id_institucion;
+                                        var idinstitucion = data[c].id_jardin;
                                         var row = '<tr>'+
-                                            '<td>'+ data[c].nit +'</td>'+
-                                            '<td>'+ data[c].nombre +'</td>'+
+                                            '<td>'+ data[c].nit_jardin +'</td>'+
+                                            '<td>'+ data[c].nombre_jardin +'</td>'+
                                             '<td>'+ data[c].direccion +'</td>'+
                                             
                                             '<td>'+

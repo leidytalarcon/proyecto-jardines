@@ -17,7 +17,7 @@
                                     <div class="col-lg-12 margin-tb">
                                         
                                         <div class="pull-right">
-                                            <a class="btn btn-primary" href="{{ route('tema_crear') }}">Crear tema</a>
+                                            <a class="btn btn-primary" id="tema_nuevo">Crear tema</a>
                                         </div>
                                     </div>
                                 </div>

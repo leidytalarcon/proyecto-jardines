@@ -151,7 +151,7 @@ Route::get('docente/index', [
 
 Route::get('docente/', [
     'uses' =>'docenteController@listar', 
-    'as' => 'docente_listar' 
+    'as' => 'docente.listar' 
 ]);
 
 Route::get('docente/editar/{id_docente}/', [
@@ -159,9 +159,10 @@ Route::get('docente/editar/{id_docente}/', [
     'as' => 'docente.editar'
 ]);
 
+
 Route::get('docente/nuevo/', [
-    'uses' =>'docenteController@nuevo',   
-    'as' => 'docente_crear'
+    'uses' =>'docenteController@nuevo', 
+    'as' => 'docente.nuevo' 
 ]);
 
 Route::post('/docente/guardar', 'docenteController@guardar');
@@ -177,12 +178,12 @@ Route::get('tarea/index', [
 ]);
 Route::get('tarea/', [
     'uses' =>'tareaController@listar', 
-    'as' => 'tarea_listar' 
+    'as' => 'tarea.listar' 
 ]);
 
 Route::get('tarea/nuevo/', [
     'uses' =>'tareaController@nuevo', 
-    'as' => 'tarea_crear' 
+    'as' => 'tarea.nuevo' 
 ]);
 
 Route::post('/tarea/guardar','tareaController@guardar');
@@ -204,12 +205,16 @@ Route::get('tema/index', [
 
 Route::get('tema/', [
     'uses' =>'temaController@listar', 
-    'as' => 'tema_listar' 
+    'as' => 'tema.listar' 
 ]);
 
 Route::get('tema/nuevo/', [
     'uses' =>'temaController@nuevo', 
     'as' => 'tema_crear' 
+]);
+Route::get('tema/nuevo/', [
+    'uses' =>'temaController@nuevo', 
+    'as' => 'tema.nuevo' 
 ]);
 
 Route::post('/tema/guardar','temaController@guardar');
@@ -230,21 +235,26 @@ Route::get('rector/index', [
 ]);
 Route::get('rector/', [
     'uses'=>'RectorController@listar',
-    'as' => 'rector_listar'
+    'as' => 'rector.listar'
 ]);
 
-Route::get('rector/nuevo/', [
+Route::get('rector/crear/', [
     'uses'=>'RectorController@create',
-    'as' => 'rector_crear']);
+    'as' => 'rector.crear']);
 
 Route::get('rector/editar/{id_rector}/',[
     'uses'=> 'rectorController@editar',
     'as'=> 'rector.editar'
 ]);    
 Route::post('rector/editar/{id_rector}/', [
-    'uses'=>'rectorController@editar',
-    'as' => 'rector_editar'
+    'uses'=>'rectorController@actualizar',
+    'as' => 'rector.actualizar'
 ]); 
+
+Route::get('rector/nuevo/', [
+    'uses' =>'rectorController@nuevo', 
+    'as' => 'rector.nuevo' 
+]);
 Route::post('/rector/guardar','rectorController@guardar');
 
 ////////////LOGIN///////////////
@@ -346,17 +356,19 @@ Route::post('auth/login/', [
    'as' => 'auth.login' 
 ]);
  
+Route::get('foro/', [
+    'uses' =>'foroController@listar', 
+   'as' => 'foro.listar' 
+]);
+
+Route::get('curso/', [
+'uses' =>'cursoController@listar', 
+'as' => 'curso.listar' 
+]);
+
 Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('logout', 'ApiController@logout');
  
     Route::get('user', 'ApiController@getAuthUser');
-    Route::get('foro/', [
-        'uses' =>'foroController@listar', 
-       'as' => 'foro.listar' 
-   ]);
-
-   Route::get('curso/', [
-    'uses' =>'cursoController@listar', 
-    'as' => 'curso.listar' 
-]);
+    
 });

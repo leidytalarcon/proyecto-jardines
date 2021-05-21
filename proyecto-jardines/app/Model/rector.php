@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,6 +17,7 @@ class rector extends Model
     protected $fillable = [
         'documento_rector',
         'nombre_rector',
+       
         'telefono',
         'username',
         'contrasena',

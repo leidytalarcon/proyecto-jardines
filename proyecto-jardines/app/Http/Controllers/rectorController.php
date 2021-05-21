@@ -18,17 +18,16 @@ class rectorController extends BaseController
     public function index()
     {
         return view('rector.rector_listar');
-
     }
-    public function listar(){
-        $titulo = 'Titulo';
-        $rector = rector::all();
 
-        return view('rector.rector_listar',compact('titulo','rector')); 
+    public function listar(){
+
+        $rector = rector::all();
+        return response()->json($rector, 200);
     }
 
     public function editar($id_rector){
-        $rector = rector::find($id_docente);
+        $rector = rector::find($id_rector);
         return view('rector.rector_editar',compact('rector')); 
     }
 
@@ -40,18 +39,15 @@ class rectorController extends BaseController
     public function guardar(Request $request){
         
         rector::create([
-
-            'documento' => $request['documento'],
-            'nombre' => $request['nombre'],
-            'correo' => $request['correo'],
+            'documento_rector' => $request['documento_rector'],
+            'nombre_rector' => $request['nombre'],
+            
             'telefono' => $request['telefono'],
-            'direccion' =>$request['direccion'],
-            'ciudad' =>$request['ciudad'],
             'username' =>$request['username'],
             'contrasena' =>$request['contrasena'],
-            'institucion_id_jardin'  => $request['id_institucion'],
-            'rol_id_rol'=> 3
-           
+            'institucion_id_jardin'  => 1,
+            'rol_id_rol'=> 1
+    
           ]);
           $titulo = 'Titulo';
           $rector = rector::all();
@@ -61,12 +57,10 @@ class rectorController extends BaseController
 
     public function actualizar(Request $request,$id_rector){
         $rector = rector::find($id_rector);
-        $rector['documento'] = $request['documento'];
-        $rector['nombre']=$request['nombre'];
-        $rector['correo'] =$request['correo'];
+        $rector['documento_rector'] = $request['documento'];
+        $rector['nombre_rector']=$request['nombre'];
+        
         $rector['telefono'] =$request['telefono'];
-        $rector['direccion'] =$request['direccion'];
-        $rector['ciudad'] =$request['ciudad'];         
         $rector['username' ]=$request['username'];
         $rector['contrasena'] =$request['contrasena'];
 

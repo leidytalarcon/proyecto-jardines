@@ -15,7 +15,9 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12 margin-tb">
-                                        
+                                        <div class="pull-right">
+                                            <a class="btn btn-primary"  href="{{route('descargarPDFEstudiantes')}}" target="_blank">Ver PDF</a>
+                                        </div>
                                         <div class="pull-right">
                                             <a class="btn btn-primary" id="estudiante_nuevo">Crear estudiante</a>
                                         </div>

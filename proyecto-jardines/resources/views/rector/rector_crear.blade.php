@@ -14,7 +14,7 @@
                         <div class="card-body">
                             <div class="form-group">
                               <label for=""class="col-12 ">DOCUMENTO</label>
-                              <input type="number" class="form-control col-md-15" name="documento" placeholder="Ingrese documento">
+                              <input type="number" class="form-control col-md-15" name="documento_rector" placeholder="Ingrese documento">
                             </div>
                             <div class="form-group">
                               <label for=""class="col-12">NOMBRE </label>
@@ -33,10 +33,6 @@
                               <input type="text" class="form-control col-md-15" name="contrasena" placeholder="ingrese su contraseña">
                             </div>
                             <div class="form-group">
-                              <label for=""class="col-12">CORREO</label>
-                              <input type="text" class="form-control col-md-15" name="correo" placeholder="ingrese su correo">
-                            </div>
-                            <div class="form-group">
                               <label for=""class="col-12">DIRECCION</label>
                               <input type="text" class="form-control col-md-15" name="direccion" placeholder="ingrese su direccion">
                             </div>
@@ -44,15 +40,8 @@
                               <label for=""class="col-12">CIUDAD</label>
                               <input type="text" class="form-control col-md-15" name="ciudad" placeholder="ingrese su ciudad">
                             </div>
-                            <strong>Rector:</strong>
-                            <br>
-                         <select name="id_rector" style="width:500px"  >
-                         
-                         <option value="">Rector</option>
-                         @foreach($Rector as $Rector)
-                            <option value="{{$rector['id_rector']}}">{{$rector["nombre_rector"]}}</option> 
-                         @endforeach
-                         </select>
+                           
+                        
                         </div>
                             <div class="row form-group">
                                 <button type="submit" class="btn-success col-md-9 offset-2">AGREGAR</button>

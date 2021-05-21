@@ -17,7 +17,7 @@
                                     <div class="col-lg-12 margin-tb">
                                         
                                         <div class="pull-right">
-                                            <a class="btn btn-primary" href="{{ route('rector_crear') }}">Crear Rector</a>
+                                            <a class="btn btn-primary"  id="rector_nuevo" href="/">Crear Rector</a>
                                         </div>
                                     </div>
                                 </div>
@@ -60,7 +60,8 @@
                                      for(var c in data){
                                         var idrector = data[c].id_rector;
                                         var row = '<tr>'+
-                                            '<td>'+ data[c].nombre +'</td>'+
+                                            '<td>'+ data[c].documento_rector +'</td>'+
+                                            '<td>'+ data[c].nombre_rector +'</td>'+
                                             '<td>'+ data[c].telefono +'</td>'+
                                             '<td>'+ data[c].institucion_id_jardin +'</td>'+
                                             

@@ -87,7 +87,7 @@ aria-expanded="true" aria-controls="collapsePages1">
 <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 <div class="bg-white py-2 collapse-inner rounded">
     <h6 class="collapse-header">RECTOR:</h6>
-    <a class="collapse-item" href="{{ route('rector_crear') }}"> Registro Rector</a>
+    <a class="collapse-item" href="{{ route('rector.nuevo') }}"> Registro Rector</a>
     <a class="collapse-item" id="rector" href="/">Listar Rectores</a>
     <h6 class="collapse-header">JARDINES:</h6>
     <a class="collapse-item" href="{{ route('institucion.nuevo') }}">Registro Jardines</a>
@@ -107,7 +107,7 @@ aria-expanded="true" aria-controls="collapsePages2">
 <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 <div class="bg-white py-2 collapse-inner rounded">
     <h6 class="collapse-header">DOCENTE:</h6>
-    <a class="collapse-item" href="{{ route('docente_crear') }}">Registro Docentes</a>
+    <a class="collapse-item" href="{{ route('docente.nuevo') }}">Registro Docentes</a>
     <a class="collapse-item" id="docente" href="/">Ver Docentes</a>
     <a class="collapse-header">CURSO:</a>
     <a class="collapse-item" href="{{ route('curso.nuevo') }}">Registro cursos</a>
@@ -134,7 +134,7 @@ aria-expanded="true" aria-controls="collapsePages3">
     <h6 class="collapse-header">TEMAS:</h6>
     <a class="collapse-item" id="tema" href="/">Registrar temas</a>
     <a class="collapse-item" id="tarea" href="/">Registrar Tareas</a>
-    <a class="collapse-item" id="foro" href="/">Agregar foro</a>
+    <a class="collapse-item" id="foro_crear" href="/">Agregar foro</a>
     <div class="collapse-divider"></div>
   
 </div>
@@ -151,8 +151,8 @@ aria-expanded="true" aria-controls="collapsePages4">
 <div id="collapsePages4" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
 <div class="bg-white py-2 collapse-inner rounded">
     <h6 class="collapse-header">Ventanas:</h6>
-    <a class="collapse-item" href="/">Ver temas</a>
-    <a class="collapse-item" href="/"> Ver Tareas</a>
+    <a class="collapse-item"  id="tema_listar" href="/">Ver temas</a>
+    <a class="collapse-item" id="tarea_listar" href="/"> Ver Tareas</a>
     <a class="collapse-item" id="foro" href="/"> Participar foro</a>
    
     <div class="collapse-divider"></div>                          
@@ -217,7 +217,12 @@ aria-expanded="true" aria-controls="collapsePages4">
         $('#foro').click(function(e) {
             e.preventDefault();
             route_list = '{{ route('foro.index') }}';
+            window.location.href = route_list;
+        });
 
+        $('#foro_crear').click(function(e) {
+            e.preventDefault();
+            route_list = '{{ route('foro.index') }}';
             window.location.href = route_list;
         });
 
@@ -227,7 +232,20 @@ aria-expanded="true" aria-controls="collapsePages4">
 
             window.location.href = route_list;
         });
+
+        $('#tema_listar').click(function(e) {
+            e.preventDefault();
+            route_list = '{{ route('tema.index') }}';
+
+            window.location.href = route_list;
+        });
         $('#tarea').click(function(e) {
+            e.preventDefault();
+            route_list = '{{ route('tarea.index') }}';
+
+            window.location.href = route_list;
+        });
+        $('#tarea_listar').click(function(e) {
             e.preventDefault();
             route_list = '{{ route('tarea.index') }}';
 

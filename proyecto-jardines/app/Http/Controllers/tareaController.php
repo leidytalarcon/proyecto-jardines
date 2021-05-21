@@ -22,11 +22,11 @@ class tareaController extends BaseController
 
     }
     public function listar(){
-        $titulo = 'Titulo';
-        $tareas = tarea::all();
 
-        return view('tarea.tarea_listar',compact('titulo','tareas')); 
+        $tarea = tarea::all();
+        return response()->json($tarea, 200);
     }
+
 
     public function editar($idtarea){
         $tarea = tarea::find($idtarea);
@@ -46,7 +46,7 @@ class tareaController extends BaseController
             'contenido' => $request['contenido'],
             'tarea_doc' => $request['tarea_doc'],
             'tarea_est' =>$request['tarea_est'],
-            'tema_idtema' => $request['idtema']
+            'tema_idtema' => $request['id_tema']
             
            
           ]);
