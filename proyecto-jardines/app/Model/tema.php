@@ -17,6 +17,7 @@ class tema extends Model
 
     protected $fillable = [
         'nombre',
+        'numero',
         'contenido',
         'apoyo',
         'foro',
